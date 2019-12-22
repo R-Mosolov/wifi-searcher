@@ -1,0 +1,11 @@
+{
+  "name": "wifi-searcher",
+  "version": "0.0.0",
+  "dependencies": {
+    "express": "~4.17.1",
+    "express-generator": "~4.16.1",
+    "mongo": "~0.1.0",
+    "mongod": "~2.0.0",
+    "node": "~12.14.0"
+  }
+}
