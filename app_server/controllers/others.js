@@ -1,3 +1,3 @@
 module.exports.about = function(req, res) {
-    res.render('about', { title: 'About' });
+    res.render('generic-text', { title: 'О нас | Поисковик Wi-Fi' });
 };

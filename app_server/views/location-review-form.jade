@@ -11,7 +11,7 @@ block content
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='name') Ваше имя
           .col-xs-10.col-sm-12
-            input#name.form-control(name='name', placeholder='Иван')
+            input#name.form-control(name='name', placeholder='Например, Иван')
 
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='rating') Ваша оценка
@@ -24,9 +24,17 @@ block content
               option 1
 
         .form-group
+          label.col-xs-10.col-sm-12.text-left.control-label(for='rosette') На месте есть розетка
+          .col-xs-10.col-sm-12
+            select#rating.form-control.input-sm(name='rosette')
+              option Не знаю
+              option Да
+              option Нет
+
+        .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='review') Ваш отзыв
           .col-xs-10.col-sm-12
-            textarea#review.form-control(name='review', rows='5', placeholder='Опишите, пожалуйста, максимально подробно, что именно Вам понравилось / не понравилось.')
+            textarea#review.form-control(name='review', rows='5', placeholder='Опишите, пожалуйста, максимально подробно, что именно Вам понравилось / не понравилось в этом месте.')
 
         .col-xs-10.col-sm-12
           button.btn.btn-success.pull-right Добавить отзыв
