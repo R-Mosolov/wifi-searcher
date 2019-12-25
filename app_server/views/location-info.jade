@@ -4,13 +4,17 @@ block content
   .row.page-header
     .col-lg-12
       h1 Coffee Like
+      span.rating
       hr
   .row
     .col-xs-12.col-sm-9
       .row
-        .col-xs-12.col-sm-5
-          p.rating
-          p Казань, ул. Пушкина, д. 15
+        .col-xs-12.col-sm-6
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Адрес
+            .panel-body
+              p Казань, ул. Пушкина, д. 31
           .panel.panel-primary
             .panel-heading
               h2.panel-title Часы работы
@@ -22,47 +26,51 @@ block content
             .panel-heading
               h2.panel-title Преимущества места
             .panel-body
-              span.label.label-warning
-                | &nbsp; Свежий кофе
+              span.badge.badge-pill.badge-info Свежий кофе
               | &nbsp;
-              span.label.label-warning
-                | &nbsp; Быстрый Wi-Fi
+              span.badge.badge-pill.badge-info Быстрый Wi-Fi
               | &nbsp;
-              span.label.label-warning
-                | &nbsp; Молодёжный интерьер
+              span.badge.badge-pill.badge-info Стильный интерьер
+              | &nbsp;
+              span.badge.badge-pill.badge-info Бесплатная парковка
+              | &nbsp;
+              span.badge.badge-pill.badge-info Хороший вид из окна
               | &nbsp;
 
-        .col-xs-12.col-sm-4.location-map
+        .col-xs-12.col-sm-3.location-map
           .panel.panel-primary
             .panel-heading
               h2.panel-title Расположение места
             .panel-body
-              img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2')
+              iframe(src='https://yandex.ru/map-widget/v1/-/CGtHq63R', width='350', height='350', frameborder='0',
+                allowfullscreen='true')
 
-        .col-xs-12.col-sm-9
+        .col-xs-12.col-sm-12
           .panel.panel-primary.review-panel
-            .panel-heading
-              a.btn.btn-default.pull-right(href='/location/review/new') Добавить отзыв
-              h2.panel-title Отзывы постителей
+            .panel-heading.mb-4
+              h2.panel-title Отзывы посетителей
             .panel-body.review-container
-              .row
-                .review
-                  .well.well-sm.review-header
-                    span.rating
-                    span.reviewAuthor Роман Мосолов
-                    small.reviewTimestamp 25 декабря 2019
-                  .col-xs-12
-                    p Какое потрясающее место! Я обязательно вернусь сюда еще раз.
-              .row
-                .review
-                  .well.well-sm.review-header
-                    span.rating
+              .card.mb-3
+                h5.card-header Отзыв 1
+                .card-body
+                  h5.card-title
                     span.reviewAuthor Сергей Сидоров
+                    | &nbsp;
                     small.reviewTimestamp 26 декабря 2019
-                  .col-xs-12
-                    p В целом, здесь неплохо. Правда, очень медленный Wi-Fi :(
+                  p.card-text В целом, здесь неплохо. Правда, очень медленный Wi-Fi :(
+              .card
+                h5.card-header Отзыв 2
+                .card-body
+                  h5.card-title
+                    span.reviewAuthor Роман Мосолов
+                    | &nbsp;
+                    small.reviewTimestamp 25 декабря 2019
+                  p.card-text Какое потрясающее место! Я обязательно вернусь сюда ещё раз.
+              a.btn.btn-success.mt-4.pull-right(href='/location/review/new') Добавить отзыв
+
     .col-xs-12.col-sm-3
       p.lead
-        | Coffee Like is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
+        | Coffee Like is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some
+        work done.
       p
         | If you've been and you like it - or if you don't - please leave a review to help other people just like you.

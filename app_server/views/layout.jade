@@ -3,29 +3,28 @@ html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
+    link(rel='stylesheet', href='/bootstrap/css/sandstone.bootstrap.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
 
-  body.min-vh-100.container
-    .navbar.navbar-expand-lg
-      .navbar-header
-        a.navbar-brand(href='/') WiFi Searcher
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-      #navbar-main.navbar-collapse.collapse
-        ul.nav.navbar-nav
-          li
-            a(href='/about/') About
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+      .container
+        img(src='/images/wifi.svg', style='width: 20px; height: 20px', class='mr-2')
+        a.navbar-brand(href='/') Поисковик Wi-Fi
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav',
+            aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href='/about') О нас
+            li.nav-item
+              a.nav-link(href='/location') О месте
+            li.nav-item
+              a.nav-link(href='/location/review/new') Добавить отзыв
 
     .container.pb-4.mb-4
       block content
-
-    .footer
-      .row
-        .col-xs-12.mb-4
-          small &copy; Роман Мосолов 2019
 
     script(src='/javascript/jquery.min.js')
     script(src='/bootstrap/js/bootstrap.js/bootstrap.min.js')

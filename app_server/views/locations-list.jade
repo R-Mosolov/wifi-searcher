@@ -1,61 +1,56 @@
 extends layout
 
 block content
-  #banner.page-header
+  #banner.page-header.mb-3
     .row
       .col-lg-6
         h1 Поисковик Wi-Fi
-          small &nbsp; Найти места для работы с Wi-Fi рядом с Вами!
+        hr
+        p Найдите свободное место с Wi-Fi!
   .row
     .col-xs-12.col-sm-8
-      p Список мест
+      .row.list-group.col-sm-8
+      .col-xs-12.list-group-item.shadow-sm.mb-3
+        h4
+          a(href='/location') Starbucks
+          small &nbsp;
+          span.badge.pull-right.badge-default 130 м.
+        p.address Казань, ул. Петербургская, д. 1
+        p
+          span.badge.badge-pill.badge-info Горячие напитки
+          | &nbsp;
+          span.badge.badge-pill.badge-info Сладости
+          | &nbsp;
+          span.badge.badge-pill.badge-info Быстрый Wi-Fi
+          | &nbsp;
+
+      .col-xs-12.list-group-item.shadow-sm.mb-3
+        h4
+          a(href='/location') Coffee Like
+          small &nbsp;
+          span.badge.pull-right.badge-default 100 м.
+        p.address Казань, ул. Пушкина, д. 31
+        p
+          span.badge.badge-pill.badge-info Горячие напитки
+          | &nbsp;
+          span.badge.badge-pill.badge-info Сладости
+          | &nbsp;
+          span.badge.badge-pill.badge-info Быстрый Wi-Fi
+          | &nbsp;
+
+      .col-xs-12.list-group-item.shadow-sm.mb-3
+        h4
+          a(href='/location') Кафетериус
+          small &nbsp;
+          span.badge.pull-right.badge-default 150 м.
+        p.address Казань, ул. Петербургская, д. 59
+        p
+          span.badge.badge-pill.badge-info Горячие напитки
+          | &nbsp;
+          span.badge.badge-pill.badge-info Сладости
+          | &nbsp;
+          span.badge.badge-pill.badge-info Быстрый Wi-Fi
+          | &nbsp;
+
     .col-xs-12.col-sm-4
-      p.lead Веб-приложение "Поисковик Wi-Fi" поможет найти подходящие места для работы.
-
-  .row.list-group.col-sm-8
-    .col-xs-12.list-group-item
-      h4
-        a(href='/location') Starbucks
-        small &nbsp;
-        span.badge.pull-right.badge-default 130m
-      p.address Казань, ул. Петербургская, д. 1
-      p
-        span.label.label-warning Hot drinks
-        | &nbsp;
-        span.label.label-warning Food
-        | &nbsp;
-        span.label.label-warning Premium wifi
-        | &nbsp;
-    .col-xs-12.list-group-item
-
-    h4
-      a(href='/location') Coffee Like
-      small &nbsp;
-      span.badge.pull-right.badge-default 100m
-    p.address Казань, ул. Пушкина, д. 15
-    p
-      span.label.label-warning Hot drinks
-      | &nbsp;
-      span.label.label-warning Food
-      | &nbsp;
-      span.label.label-warning Premium wifi
-      | &nbsp;
-    .col-xs-12.list-group-item
-
-    h4
-      a(href='/location') Кафетериус
-      small &nbsp;
-      span.badge.pull-right.badge-default 150m
-    p.address Казань, ул. Петербургская, д. 59
-    p
-      span.label.label-warning Hot drinks
-      | &nbsp;
-      span.label.label-warning Food
-      | &nbsp;
-      span.label.label-warning Premium wifi
-      | &nbsp;
-    .col-xs-12.list-group-item
-
-  .col-xs-12.col-sm-4
-    p.lead
-      | Веб-приложение "Поисковик Wi-Fi" поможет найти подходящие места для работы.
+      p.lead Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха или работы.
