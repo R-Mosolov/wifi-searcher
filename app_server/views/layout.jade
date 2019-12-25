@@ -3,29 +3,29 @@ html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
-    link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    .navbar.navbar-expand-lg.navbar-light.bg-light
-      .container
-        .navbar-header
-          a.navbar-brand(href='/') WiFi Searcher
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-        #navbar-main.navbar-collapse.collapse
-          ul.nav.navbar-nav
-            li
-              a(href='/about/') About
 
-    .container
+  body.min-vh-100.container
+    .navbar.navbar-expand-lg
+      .navbar-header
+        a.navbar-brand(href='/') WiFi Searcher
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navbar-main.navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li
+            a(href='/about/') About
+
+    .container.pb-4.mb-4
       block content
 
-      .footer
-        .row
-          .col-xs-12
-            small &copy; Роман Мосолов 2019
+    .footer
+      .row
+        .col-xs-12.mb-4
+          small &copy; Роман Мосолов 2019
+
     script(src='/javascript/jquery.min.js')
     script(src='/bootstrap/js/bootstrap.js/bootstrap.min.js')
