@@ -4,53 +4,24 @@ block content
   #banner.page-header.mb-3
     .row
       .col-lg-6
-        h1 Поисковик Wi-Fi
+        h1=pageHeader.title
         hr
-        p Найдите свободное место с Wi-Fi!
+        p #{pageHeader.strapline}
   .row
     .col-xs-12.col-sm-8
       .row.list-group.col-sm-8
-      .col-xs-12.list-group-item.shadow-sm.mb-3
-        h4
-          a(href='/location') Starbucks
-          small &nbsp;
-          span.badge.pull-right.badge-default 130 м.
-        p.address Казань, ул. Петербургская, д. 1
-        p
-          span.badge.badge-pill.badge-info Горячие напитки
-          | &nbsp;
-          span.badge.badge-pill.badge-info Сладости
-          | &nbsp;
-          span.badge.badge-pill.badge-info Быстрый Wi-Fi
-          | &nbsp;
 
-      .col-xs-12.list-group-item.shadow-sm.mb-3
-        h4
-          a(href='/location') Coffee Like
-          small &nbsp;
-          span.badge.pull-right.badge-default 100 м.
-        p.address Казань, ул. Пушкина, д. 31
-        p
-          span.badge.badge-pill.badge-info Горячие напитки
-          | &nbsp;
-          span.badge.badge-pill.badge-info Сладости
-          | &nbsp;
-          span.badge.badge-pill.badge-info Быстрый Wi-Fi
-          | &nbsp;
-
-      .col-xs-12.list-group-item.shadow-sm.mb-3
-        h4
-          a(href='/location') Кафетериус
-          small &nbsp;
-          span.badge.pull-right.badge-default 150 м.
-        p.address Казань, ул. Петербургская, д. 59
-        p
-          span.badge.badge-pill.badge-info Горячие напитки
-          | &nbsp;
-          span.badge.badge-pill.badge-info Сладости
-          | &nbsp;
-          span.badge.badge-pill.badge-info Быстрый Wi-Fi
-          | &nbsp;
+      each location in locations
+        .col-xs-12.list-group-item.shadow-sm.mb-3
+          h4
+            a(href='/location')= location.name
+            small &nbsp;
+            span.badge.pull-right.badge-default #{location.distance} м.
+          p.address= location.address
+          p
+            each facility in location.facilities
+              span.badge.badge-pill.badge-info Горячие напитки
+              | &nbsp;
 
     .col-xs-12.col-sm-4
       p.lead Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха или работы.
