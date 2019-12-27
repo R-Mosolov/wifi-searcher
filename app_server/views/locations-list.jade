@@ -1,5 +1,7 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
   #banner.page-header.mb-3
     .row
@@ -14,14 +16,15 @@ block content
       each location in locations
         .col-xs-12.list-group-item.shadow-sm.mb-3
           h4
-            a(href='/location')= location.name
+            a(href='/location')=location.name
             small &nbsp;
             span.badge.pull-right.badge-default #{location.distance} м.
-          p.address= location.address
+            +generateRating(location.rating)
+          p.address=location.address
           p
             each facility in location.facilities
-              span.badge.badge-pill.badge-info Горячие напитки
+              span.badge.badge-pill.badge-info=facility
               | &nbsp;
 
     .col-xs-12.col-sm-4
-      p.lead Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха или работы.
+      p.lead=sidebar
