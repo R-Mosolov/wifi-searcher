@@ -1,9 +1,11 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
   .row.page-header
-    .col-lg-12
-      h1 Coffee Like
+    .col-lg-3
+      h1=pageHeader.title
       hr
   .row
     .col-xs-12.col-sm-9
@@ -13,35 +15,33 @@ block content
             .panel-heading
               h2.panel-title Адрес
             .panel-body
-              p Казань, ул. Пушкина, д. 31
+              p=location.address
           .panel.panel-primary
             .panel-heading
               h2.panel-title Часы работы
             .panel-body
-              p Пн-Пт, 7:00-19:00
-              p Сб, 8:00-17:00
-              p Вс, Закрыто
+              each time in location.workingTimes
+                | #{time.days},
+                | &nbsp;
+                if time.closed
+                  | Закрыто
+                else
+                  | #{time.opening}-#{time.closing}
+                  br
           .panel.panel-primary
             .panel-heading
               h2.panel-title Преимущества места
             .panel-body
-              span.badge.badge-pill.badge-info Свежий кофе
-              | &nbsp;
-              span.badge.badge-pill.badge-info Быстрый Wi-Fi
-              | &nbsp;
-              span.badge.badge-pill.badge-info Стильный интерьер
-              | &nbsp;
-              span.badge.badge-pill.badge-info Бесплатная парковка
-              | &nbsp;
-              span.badge.badge-pill.badge-info Хороший вид из окна
-              | &nbsp;
+              each facility in location.facilities
+                span.badge.badge-pill.badge-info=facility
+                | &nbsp;
 
         .col-xs-12.col-sm-3.location-map
           .panel.panel-primary
             .panel-heading
-              h2.panel-title Расположение места
+              h2.panel-title Местоположение
             .panel-body
-              iframe(src='https://yandex.ru/map-widget/v1/-/CGtHq63R', width='350', height='350', frameborder='0',
+              iframe(src=location.mapSource, width='350', height='350', frameborder='0',
                 allowfullscreen='true')
 
         .col-xs-12.col-sm-12
@@ -49,27 +49,22 @@ block content
             .panel-heading.mb-4
               h2.panel-title Отзывы посетителей
             .panel-body.review-container
-              .card.mb-3
-                h5.card-header Отзыв 1
-                .card-body
-                  h5.card-title
-                    span.reviewAuthor Сергей Сидоров
+
+              each review in reviews
+                .card.mb-3
+                  h5.card-header
+                    | Отзыв #{review.reviewNumber}
                     | &nbsp;
-                    small.reviewTimestamp 26 декабря 2019
-                  p.card-text В целом, здесь неплохо. Правда, очень медленный Wi-Fi :(
-              .card
-                h5.card-header Отзыв 2
-                .card-body
-                  h5.card-title
-                    span.reviewAuthor Роман Мосолов
-                    | &nbsp;
-                    small.reviewTimestamp 25 декабря 2019
-                  p.card-text Какое потрясающее место! Я обязательно вернусь сюда ещё раз.
-              a.btn.btn-success.mt-4.pull-right(href='/location/review/new') Добавить отзыв
+                    span.rating
+                      +generateRating(review.rating)
+                  .card-body
+                    h5.card-title
+                      span.reviewAuthor=review.author
+                      | &nbsp;
+                      small.reviewTimestamp=review.date
+                    p.card-text=review.reviewText
+              a.btn.btn-success.pull-right(href='/location/review/new') Добавить отзыв
 
     .col-xs-12.col-sm-3
-      p.lead
-        | Coffee Like is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some
-        work done.
-      p
-        | If you've been and you like it - or if you don't - please leave a review to help other people just like you.
+      p.lead=sidebar.context
+      p=sidebar.callToAction

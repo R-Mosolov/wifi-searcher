@@ -2,7 +2,7 @@ extends layout
 
 block content
   .row.page-header
-    .col-lg-12
+    .col-lg-5
       h1 Отзыв о Coffee Like
       hr
   .row
@@ -16,7 +16,7 @@ block content
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='rating') Ваша оценка
           .col-xs-10.col-sm-12
-            select#rating.form-control.input-sm(name='rating')
+            select.form-control.input-sm(name='rating')
               option 5
               option 4
               option 3
@@ -26,7 +26,7 @@ block content
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='rosette') На месте есть розетка
           .col-xs-10.col-sm-12
-            select#rating.form-control.input-sm(name='rosette')
+            select.form-control.input-sm(name='rosette')
               option Не знаю
               option Да
               option Нет

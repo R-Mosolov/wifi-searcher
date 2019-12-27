@@ -34,7 +34,56 @@ module.exports.homelist = function(req, res) {
 
 module.exports.locationInfo = function(req, res) {
     res.render('location-info', {
-        title: 'О месте | Поисковик Wi-Fi'
+        title: 'Coffee Like',
+
+        pageHeader: {
+            title: 'Coffee Like'
+        },
+
+        sidebar: {
+            context: 'Место "Coffee Like" размещено здесь потому, что оно обладает доступным Wi-Fi и просторными ' +
+                'креслами для работы на ноутбуке.',
+            callToAction: 'Если Вы уже посещали это место, то будем очень рады получить Ваш отзыв о нём. Вы ' +
+                'поможете нам стать лучше!'
+        },
+
+        location: {
+            name: 'Coffee Like',
+            address: 'Казань, ул. Пушкина, д. 31',
+            rating: 3,
+            facilities: ['Свежий кофе', 'Быстрый Wi-Fi', 'Стильный интерьер', 'Бесплатная парковка',
+                'Хороший вид из окна'],
+            mapSource: 'https://yandex.ru/map-widget/v1/-/CGtHq63R',
+
+            workingTimes: [{
+                days: 'Пн-Пт',
+                opening: '7:00',
+                closing: '19:00',
+                closed: false
+            }, {
+                days: 'Сб',
+                opening: '8:00',
+                closing: '17:00',
+                closed: false
+            }, {
+                days: 'Вс',
+                closed: true
+            }]
+        },
+
+        reviews: [{
+            reviewNumber: 1,
+            author: 'Сергей Сидоров',
+            rating: 4,
+            date: '26 декабря 2019',
+            reviewText: 'В целом, здесь неплохо. Правда, очень медленный Wi-Fi :('
+        }, {
+            reviewNumber: 2,
+            author: 'Роман Мосолов',
+            rating: 5,
+            date: '25 декабря 2019',
+            reviewText: 'Какое потрясающее место! Я обязательно вернусь сюда ещё раз.'
+        }]
     });
 };
 
