@@ -34,7 +34,7 @@ module.exports.homelist = function(req, res) {
 
 module.exports.locationInfo = function(req, res) {
     res.render('location-info', {
-        title: 'Coffee Like',
+        title: 'Coffee Like | Поисковик Wi-Fi',
 
         pageHeader: {
             title: 'Coffee Like'
@@ -89,6 +89,9 @@ module.exports.locationInfo = function(req, res) {
 
 module.exports.addReview = function(req, res) {
     res.render('location-review-form', {
-        title: 'Добавить отзыв | Поисковик Wi-Fi'
+        title: 'Добавить отзыв | Поисковик Wi-Fi',
+        pageHeader: {
+            title: 'Отзыв о Coffee Like'
+        }
     });
 };
