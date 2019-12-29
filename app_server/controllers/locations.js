@@ -1,4 +1,4 @@
-module.exports.homelist = function(req, res) {
+module.exports.homeList = function(req, res) {
     res.render('locations-list', {
         title: 'Поисковик Wi-Fi',
 

@@ -38,3 +38,5 @@ var gracefulShutdown = function (msg, callback) {
         callback();
     })
 };
+
+require('./locations');
