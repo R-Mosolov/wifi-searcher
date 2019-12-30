@@ -73,13 +73,13 @@ module.exports.locationInfo = function(req, res) {
 
         reviews: [{
             reviewNumber: 1,
-            author: 'Сергей Сидоров',
+            author: 'Сергей С.',
             rating: 4,
             date: '26 декабря 2019',
             reviewText: 'В целом, здесь неплохо. Правда, очень медленный Wi-Fi :('
         }, {
             reviewNumber: 2,
-            author: 'Роман Мосолов',
+            author: 'Роман М.',
             rating: 5,
             date: '25 декабря 2019',
             reviewText: 'Какое потрясающее место! Я обязательно вернусь сюда ещё раз.'

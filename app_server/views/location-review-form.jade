@@ -9,9 +9,9 @@ block content
     .col-xs-12.col-sm-12
       form.form-horizontal(action='/location', method='get', role='form')
         .form-group
-          label.col-xs-10.col-sm-12.text-left.control-label(for='name') Ваше имя
+          label.col-xs-10.col-sm-12.text-left.control-label(for='name') Ваши имя и фамилия
           .col-xs-10.col-sm-12
-            input#name.form-control(name='name', placeholder='Например, Иван')
+            input#name.form-control(name='name', placeholder='Например, Иван И.')
 
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='rating') Ваша оценка
@@ -34,7 +34,8 @@ block content
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='review') Ваш отзыв
           .col-xs-10.col-sm-12
-            textarea#review.form-control(name='review', rows='5', placeholder='Опишите, пожалуйста, максимально подробно, что именно Вам понравилось / не понравилось в этом месте.')
+            textarea#review.form-control(name='review', rows='5', placeholder='Опишите, пожалуйста, максимально ' +
+            'подробно, что именно Вам понравилось / не понравилось в этом месте.')
 
         .col-xs-10.col-sm-12
           button.btn.btn-success.pull-right Добавить отзыв

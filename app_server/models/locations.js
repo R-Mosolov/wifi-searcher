@@ -1,5 +1,50 @@
 var mongoose = require('mongoose');
 
+var reviewSchema = new mongoose.Schema({
+    reviewNumber: {
+        type: Number,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true,
+        'default': Date.now
+    },
+    reviewText: {
+        type: String,
+        required: true,
+        minLength: 2,
+        maxLength: 50
+    },
+});
+
+var workingTimeSchema = new mongoose.Schema({
+    days: {
+        type: String,
+        required: true
+    },
+    opening: {
+        type: String,
+        required: true
+    },
+    closing: {
+        type: String,
+        required: true
+    },
+    closed: {
+        type: Boolean,
+        required: true
+    }
+});
+
 var locationSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -23,5 +68,9 @@ var locationSchema = new mongoose.Schema({
     distance: {
         type: Number,
         required: true
-    }
+    },
+    workingTimes: [workingTimeSchema],
+    rewiews: [reviewSchema]
 });
+
+mongoose.model('Location', locationSchema);
