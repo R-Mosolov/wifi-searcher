@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
 
 mongoose.connect(dbURI);
 
-// CONNECTION EVENTS
+// connection events
 mongoose.connection.on('connected', function () {
     console.log('Mongoose connected to ' + dbURI);
 });
@@ -18,7 +18,7 @@ mongoose.connection.on('disconnected', function () {
     console.log('Mongoose disconnected');
 });
 
-// DISCONNECTION EVENTS
+// disconnection events
 process.once('SIGUSR2', function() {
     gracefulShutdown('nodemon restart', function() {
         process.kill(process.pid, 'SIGUSR2');
@@ -35,7 +35,7 @@ process.on('SIGTERM', function () {
     })
 });
 
-// DISCONNECTION MESSAGE GENERATOR
+// disconnection message generator
 var gracefulShutdown = function (msg, callback) {
     mongoose.connection.close(function () {
         console.log('Mongoose disconnected through: ' + msg);

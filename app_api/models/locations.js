@@ -70,7 +70,7 @@ var locationSchema = new mongoose.Schema({
         required: true
     },
     workingTimes: [workingTimeSchema],
-    rewiews: [reviewSchema]
+    reviews: [reviewSchema]
 });
 
 mongoose.model('Location', locationSchema);
