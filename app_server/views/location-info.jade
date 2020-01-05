@@ -41,8 +41,8 @@ block content
             .panel-heading
               h2.panel-title Местоположение
             .panel-body
-              iframe(src=location.mapSource, width='350', height='350', frameborder='0',
-                allowfullscreen='true')
+              .border.rounded
+                #map
 
         .col-xs-12.col-sm-12
           .panel.panel-primary.review-panel
@@ -68,3 +68,14 @@ block content
     .col-xs-12.col-sm-3
       p.lead=sidebar.context
       p=sidebar.callToAction
+
+    script.
+      var map;
+      function initMap() {
+        map=new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 55.793598, lng: 49.124563999999964},
+          zoom: 17
+        });
+      }
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDed4x8NTwjOt6D_nGPszsaclmSqRK9gtA&callback=initMap' +
+    '&language=ru&region=RU', async='', defer='')
