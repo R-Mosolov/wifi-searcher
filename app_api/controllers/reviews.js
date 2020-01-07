@@ -3,10 +3,27 @@ var Location = mongoose.model('Location');
 
 // FINISHED MAIN FUNCTIONS
 module.exports.reviewsCreate = function (req, res) {
-    sendResponse(res, 200, {
-        'status': 'success'
-    });
+    var locationId = req.params.locationId;
+    if (locationId) {
+        Location
+            .findById(locationId)
+            .select('reviews')
+            .exec(
+                function (err, location) {
+                    if (err) {
+                        sendResponse(res, 400, err);
+                    } else {
+                        addReview(req, res, location);
+                    }
+                }
+            );
+    } else {
+        sendResponse(res, 404, {
+            'message': 'Not found, locationId required'
+        });
+    }
 };
+
 module.exports.reviewsReadOne = function (req, res) {
     if (req.params && req.params.locationId && req.params.reviewId) {
         Location
@@ -21,12 +38,11 @@ module.exports.reviewsReadOne = function (req, res) {
                 } else if (err) {
                     sendResponse(res, 400, err);
                 }
-
                 if (location.reviews && location.reviews.length > 0) {
                     review = location.reviews.id(req.params.reviewId);
                     if (!review) {
                         sendResponse(res, 404, {
-                            'message': 'ReviewId not found'
+                            'message': 'Review ID not found'
                         });
                     } else {
                         response = {
@@ -38,7 +54,6 @@ module.exports.reviewsReadOne = function (req, res) {
                         };
                         sendResponse(res, 200, response);
                     }
-
                     sendResponse(res, 404, {
                         'message': 'No reviews found'
                     });
@@ -56,8 +71,32 @@ module.exports.reviewsRead = function (req, res) {};
 module.exports.reviewsUpdateOne = function (req, res) {};
 module.exports.reviewsDeleteOne = function (req, res) {};
 
-// ADDITIONAL FUNCTION
-var sendResponse = function(res, status, content) {
+// ADDITIONAL FUNCTIONS
+var sendResponse = function (res, status, content) {
     res.status(status);
     res.json(content);
+};
+
+var addReview = function (req, res, location) {
+    if (!location) {
+        sendResponse(res, 404, {
+            'message': 'Location ID not found'
+        });
+    } else {
+        location.reviews.push({
+            author: req.body.author,
+            rating: req.body.rating,
+            reviewText: req.body.reviewText
+        });
+        location.save(function (err, locations) {
+            var currentReview;
+            if (err) {
+                sendResponse(res, 400, err);
+            } else {
+                updateAverageRating(location._id);
+                currentReview = location.reviews[location.reviews.length - 1];
+                sendResponse(res, 201, currentReview);
+            }
+        });
+    }
 };
