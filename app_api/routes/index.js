@@ -5,7 +5,7 @@ var ctrlReviews = require('../controllers/reviews');
 
 // LOCATIONS ROUTERS
 router.post('/locations', ctrlLocations.locationsCreate);
-router.get('/locations', ctrlLocations.locationsRead);
+router.get('/locations', ctrlLocations.locationsListByDistance);
 router.get('/locations/:locationId', ctrlLocations.locationsReadOne);
 router.put('/locations/:locationId', ctrlLocations.locationsUpdateOne);
 router.delete('/locations/:locationId', ctrlLocations.locationsDeleteOne);

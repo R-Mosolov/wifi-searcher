@@ -73,7 +73,7 @@ block content
       var map;
       function initMap() {
         map=new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 55.793598, lng: 49.124563999999964},
+          center: {lng: #{location.coordinates.lng}, lat: #{location.coordinates.lat}},
           zoom: 17
         });
       }

@@ -53,7 +53,10 @@ module.exports.locationInfo = function(req, res) {
             rating: 3,
             facilities: ['Свежий кофе', 'Быстрый Wi-Fi', 'Стильный интерьер', 'Бесплатная парковка',
                 'Хороший вид из окна'],
-            mapSource: 'https://yandex.ru/map-widget/v1/-/CGtHq63R',
+            coordinates: {
+                lng: 49.124563999999964,
+                lat: 55.793598
+            },
 
             workingTimes: [{
                 days: 'Пн-Пт',
