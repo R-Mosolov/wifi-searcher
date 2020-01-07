@@ -18,8 +18,10 @@ block content
           h4
             a(href='/location')=location.name
             small &nbsp;
-            span.badge.pull-right.badge-default #{location.distance} м.
-            +generateRating(location.rating)
+              .col-sm-12.mt-2
+              span.badge.pull-right.badge-pill.badge-secondary #{location.distance} м.
+              small &nbsp;
+              +generateRating(location.rating)
           p.address=location.address
           p
             each facility in location.facilities

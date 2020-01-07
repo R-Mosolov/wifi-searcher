@@ -30,7 +30,7 @@ block content
                   br
           .panel.panel-primary
             .panel-heading
-              h2.panel-title Преимущества места
+              h2.panel-title.mt-3 Преимущества места
             .panel-body
               each facility in location.facilities
                 span.badge.badge-pill.badge-info=facility
@@ -39,7 +39,7 @@ block content
         .col-xs-12.col-sm-3.location-map
           .panel.panel-primary
             .panel-heading
-              h2.panel-title Местоположение
+              h2.panel-title.mt-3.mt-lg-0 Местоположение
             .panel-body
               .border.rounded
                 #map
@@ -47,7 +47,7 @@ block content
         .col-xs-12.col-sm-12
           .panel.panel-primary.review-panel
             .panel-heading.mb-4
-              h2.panel-title Отзывы посетителей
+              h2.panel-title.mt-4.mt-lg-4 Отзывы посетителей
             .panel-body.review-container
 
               each review in reviews
@@ -66,8 +66,8 @@ block content
               a.btn.btn-success.pull-right(href='/location/review/new') Добавить отзыв
 
     .col-xs-12.col-sm-3
-      p.lead=sidebar.context
-      p=sidebar.callToAction
+      p.lead.mt-4.mt-lg-0=sidebar.context
+      p.mt-4.mt-lg-0=sidebar.callToAction
 
     script.
       var map;
