@@ -115,9 +115,53 @@ module.exports.reviewsUpdateOne = function (req, res) {
         );
 };
 
-// NOT FINISHED MAIN FUNCTIONS
-module.exports.reviewsRead = function (req, res) {};
-module.exports.reviewsDeleteOne = function (req, res) {};
+module.exports.reviewsDeleteOne = function (req, res) {
+    if (!req.params.locationId || !req.params.reviewId) {
+        sendResponse(res, 404, {
+            'message': 'Not found, location ID and review ID are required'
+        });
+        return;
+    } else if (err) {
+        sendResponse(res, 400, err);
+        return;
+    }
+    Location
+        .findById(req.params.locationId)
+        .select('review')
+        .exec(
+            function (err, location) {
+                if (!location) {
+                    sendResponse(res, 404, {
+                        'message': 'Location ID not found'
+                    });
+                    return;
+                } else if (err) {
+                    sendResponse(res, 400, err);
+                    return;
+                }
+                if (location.reviews && location.reviews.length > 0) {
+                    if (!location.reviews.id(req.params.reviewId)) {
+                        sendResponse(res, 404, {
+                            'message': 'Review ID not found'
+                        });
+                    } else {
+                        location.reviews.id(req.params.reviewId).remove();
+                        location.save(function (err, location) {
+                            if (err) {
+                                sendResponse(res, 400, err);
+                            } else {
+                                updateAverageRating(location._id);
+                                sendResponse(res, 204, null);
+                            }
+                        });
+                    }
+                } else {
+                    sendResponse(res, 404, {
+                        'message': 'No reviews to delete'
+                    });
+                }
+        });
+};
 
 // ADDITIONAL FUNCTIONS
 var sendResponse = function (res, status, content) {

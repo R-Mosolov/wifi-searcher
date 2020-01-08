@@ -1,20 +1,6 @@
 var mongoose = require('mongoose');
 var Location = mongoose.model('Location');
 
-var radianCalculator = function () {
-    var EARTH_RADIUS = 6371;
-    var getDistanceFromRads = function (rads) {
-        return parseFloat(rads * EARTH_RADIUS);
-    };
-    var getRadsFromDistance = function (distance) {
-        return parseFloat(distance / EARTH_RADIUS);
-    };
-    return {
-        getDistanceFromRads: getDistanceFromRads,
-        getRadsFromDistance: getRadsFromDistance
-    }
-};
-
 // FINISHED MAIN FUNCTIONS
 module.exports.locationsCreate = function (req, res) {
     Location.create({
@@ -135,11 +121,41 @@ module.exports.locationsUpdateOne = function (req, res) {
         );
 };
 
-// NOT FINISHED MAIN FUNCTIONS
-module.exports.locationsDeleteOne = function (req, res) {};
+module.exports.locationsDeleteOne = function (req, res) {
+    var locationId = req.params.locationId;
+    if (locationId) {
+        Location
+            .findByIdAndRemove(locationId)
+            .exec(function (err, location) {
+                if (err) {
+                    sendResponse(res, 400, err);
+                    return;
+                }
+                sendResponse(res, 204, null);
+            });
+    } else {
+        sendResponse(res, 404, {
+            'message': 'Location ID not found'
+        });
+    }
+};
 
 // ADDITIONAL FUNCTION
 var sendResponse = function (res, status, content) {
     res.status(status);
     res.json(content);
+};
+
+var radianCalculator = function () {
+    var EARTH_RADIUS = 6371;
+    var getDistanceFromRads = function (rads) {
+        return parseFloat(rads * EARTH_RADIUS);
+    };
+    var getRadsFromDistance = function (distance) {
+        return parseFloat(distance / EARTH_RADIUS);
+    };
+    return {
+        getDistanceFromRads: getDistanceFromRads,
+        getRadsFromDistance: getRadsFromDistance
+    }
 };
