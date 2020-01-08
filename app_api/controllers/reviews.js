@@ -66,9 +66,57 @@ module.exports.reviewsReadOne = function (req, res) {
         }
 };
 
+module.exports.reviewsUpdateOne = function (req, res) {
+    if (!req.params.locationId || !res.params.reviewId) {
+        sendResponse(res, 404, {
+            'message': 'Not found, location ID and review ID are required'
+        });
+        return;
+    }
+    Location
+        .findById(locationId)
+        .select('reviews')
+        .exec(
+            function (err, location) {
+                if (!location) {
+                    sendResponse(res, 404, {
+                        'message': 'Location ID not found'
+                    });
+                    return;
+                } else if (err) {
+                    sendResponse(res, 400, err);
+                    return;
+                }
+                if (location.reviews && location.reviews.length > 0) {
+                    currentReview = location.reviews.id(req.params.id);
+                    if (!currentReview) {
+                        sendResponse(res, 404, {
+                            'message': 'Review ID not found'
+                        });
+                    } else {
+                        currentReview.author = req.params.author;
+                        currentReview.rating = req.params.rating;
+                        currentReview.reviewText = req.params.reviewText;
+                    }
+                    location.save(function (err, location) {
+                        if (err) {
+                            sendResponse(res, 400, err);
+                        } else {
+                            updateAverageRating(location._id);
+                            sendResponse(res, 200, currentReview);
+                        }
+                    });
+                } else {
+                    sendResponse(res, 404, {
+                        'message': 'No review to update'
+                    });
+                }
+            }
+        );
+};
+
 // NOT FINISHED MAIN FUNCTIONS
 module.exports.reviewsRead = function (req, res) {};
-module.exports.reviewsUpdateOne = function (req, res) {};
 module.exports.reviewsDeleteOne = function (req, res) {};
 
 // ADDITIONAL FUNCTIONS
@@ -96,6 +144,39 @@ var addReview = function (req, res, location) {
                 updateAverageRating(location._id);
                 currentReview = location.reviews[location.reviews.length - 1];
                 sendResponse(res, 201, currentReview);
+            }
+        });
+    }
+};
+
+var updateAverageRating = function (locationId) {
+    Location
+        .findById(locationId)
+        .select('rating reviews')
+        .exec(
+            function (err, location) {
+                if (!err) {
+                    calculateAverageRating(location);
+                }
+            }
+        );
+};
+
+var calculateAverageRating = function (location) {
+    var i, reviewCount, ratingAverage, ratingTotal;
+    if (location.reviews && location.reviews.length > 0) {
+        reviewCount = location.reviews.length;
+        ratingTotal = 0;
+        for (i = 0; i < reviewCount; i++) {
+            ratingTotal += location.reviews[i].rating;
+        }
+        ratingAverage = parseInt(ratingTotal / reviewCount, 10);
+        location.rating = ratingAverage;
+        location.save(function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Average rating updated to ' + ratingAverage);
             }
         });
     }
