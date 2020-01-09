@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Location = mongoose.model('Location');
 
-// FINISHED MAIN FUNCTIONS
+// MAIN FUNCTIONS
 module.exports.reviewsCreate = function (req, res) {
     var locationId = req.params.locationId;
     if (locationId) {

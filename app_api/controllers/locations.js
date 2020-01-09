@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Location = mongoose.model('Location');
 
-// FINISHED MAIN FUNCTIONS
+// MAIN FUNCTIONS
 module.exports.locationsCreate = function (req, res) {
     Location.create({
         name: req.body.name,
@@ -140,7 +140,7 @@ module.exports.locationsDeleteOne = function (req, res) {
     }
 };
 
-// ADDITIONAL FUNCTION
+// ADDITIONAL FUNCTIONS
 var sendResponse = function (res, status, content) {
     res.status(status);
     res.json(content);
