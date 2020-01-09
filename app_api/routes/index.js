@@ -12,7 +12,6 @@ router.delete('/locations/:locationId', ctrlLocations.locationsDeleteOne);
 
 // REVIEWS ROUTERS
 router.post('/locations/:locationId/reviews', ctrlReviews.reviewsCreate);
-router.get('/locations/:locationId/reviews', ctrlReviews.reviewsRead);
 router.get('/locations/:locationId/reviews/:reviewId', ctrlReviews.reviewsReadOne);
 router.put('/locations/:locationId/reviews/:reviewId', ctrlReviews.reviewsUpdateOne);
 router.delete('/locations/:locationId/reviews/:reviewId', ctrlReviews.reviewsDeleteOne);
