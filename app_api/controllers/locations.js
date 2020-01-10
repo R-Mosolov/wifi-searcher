@@ -6,7 +6,7 @@ module.exports.locationsCreate = function (req, res) {
     Location.create({
         name: req.body.name,
         address: req.body.address,
-        facilities: req.body.facilities.split(','),
+        facilities: req.body.facilities,
         rating: req.body.rating,
         distance: req.body.distance,
         workingTimes: [{
@@ -38,10 +38,10 @@ module.exports.locationsListByDistance = function (req, res) {
     };
     var geoOptions = {
         spherical: true,
-        maxDistance: radianCalculator().getRadsFromDistance(20),
+        maxDistance: radianCalculator.getRadsFromDistance(20),
         num: 10
     };
-    Location.geoSearch(point, geoOptions, function (err, results, stats) {
+    Location.geoNear(point, geoOptions, function (err, results) {
         var locations = [];
         results.forEach(function (doc) {
             locations.push({
@@ -63,7 +63,7 @@ module.exports.locationsReadOne = function(req, res) {
         .exec(function(err, location) {
             if (!location) {
                 sendResponse(res, 404, {
-                    'message': 'Object not found'
+                    'message': 'Location not found'
                 });
                 return;
             } else if (err) {
@@ -96,7 +96,7 @@ module.exports.locationsUpdateOne = function (req, res) {
                 }
                 location.name = req.body.name;
                 location.address = req.body.address;
-                location.facilities = req.body.facilities.split(',');
+                location.facilities = req.body.facilities;
                 location.rating = req.body.rating;
                 location.distance = req.body.distance;
                 location.workingTimes = [{
@@ -126,7 +126,7 @@ module.exports.locationsDeleteOne = function (req, res) {
     if (locationId) {
         Location
             .findByIdAndRemove(locationId)
-            .exec(function (err, location) {
+            .exec(function (err) {
                 if (err) {
                     sendResponse(res, 400, err);
                     return;
@@ -134,9 +134,7 @@ module.exports.locationsDeleteOne = function (req, res) {
                 sendResponse(res, 204, null);
             });
     } else {
-        sendResponse(res, 404, {
-            'message': 'Location ID not found'
-        });
+        sendResponse(res, 404, null);
     }
 };
 

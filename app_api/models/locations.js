@@ -3,24 +3,24 @@ var mongoose = require('mongoose');
 var reviewSchema = new mongoose.Schema({
     reviewNumber: {
         type: Number,
-        required: true
+        required: false
     },
     author: {
         type: String,
-        required: true
+        required: false
     },
     rating: {
         type: Number,
-        required: true
+        required: false
     },
     date: {
         type: Date,
-        required: true,
+        required: false,
         'default': Date.now
     },
     reviewText: {
         type: String,
-        required: true,
+        required: false,
         minLength: 2,
         maxLength: 50
     },
@@ -29,19 +29,19 @@ var reviewSchema = new mongoose.Schema({
 var workingTimeSchema = new mongoose.Schema({
     days: {
         type: String,
-        required: true
+        required: false
     },
     opening: {
         type: String,
-        required: true
+        required: false
     },
     closing: {
         type: String,
-        required: true
+        required: false
     },
     closed: {
         type: Boolean,
-        required: true
+        required: false
     }
 });
 
@@ -52,22 +52,22 @@ var locationSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        required: true
+        required: false
     },
     facilities: {
         type: [String],
-        required: true
+        required: false
     },
     rating: {
         type: Number,
-        required: true,
+        required: false,
         'default': 0,
         min: 0,
         max: 5
     },
     distance: {
         type: Number,
-        required: true
+        required: false
     },
     workingTimes: [workingTimeSchema],
     reviews: [reviewSchema]

@@ -1,31 +1,35 @@
-var request = require('request');
-var apiOptions = {
-    server: 'http://localhost:3000'
-};
-if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://wifi-searcher.herokuapp.com/';
-}
-
-// MAIN FUNCTIONS
 module.exports.homeList = function(req, res) {
-    var requestOptions, path;
-    path = '/api/locations';
-    requestOptions = {
-        url: apiOptions.server + path,
-        method: 'GET',
-        json: {},
-        qs: {
-            lng: 49.124563999999964,
-            lat: 55.793598,
-            maxDistance: 20
-        }
-    };
-    request(
-        requestOptions,
-        function (err, response, body) {
-            renderHomePage(res, req);
-        }
-    );
+    res.render('locations-list', {
+        title: 'Поисковик Wi-Fi',
+
+        pageHeader: {
+            title: 'Поисковик Wi-Fi',
+            strapline: 'Найдите свободное место с Wi-Fi!'
+        },
+
+        sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +
+            'или работы.',
+
+        locations: [{
+            name: 'Кафетериус',
+            address: 'Казань, ул. Петербургская, д. 9',
+            facilities: ['Горячие напитки', 'Удобные пуфики', 'Быстрый Wi-Fi'],
+            rating: 5,
+            distance: 150
+        }, {
+            name: 'Starbucks',
+            address: 'Казань, ул. Петербургская, д. 1',
+            facilities: ['Горячие напитки', 'Сладости', 'Быстрый Wi-Fi'],
+            rating: 4,
+            distance: 130
+        }, {
+            name: 'Coffee Like',
+            address: 'Казань, ул. Пушкина, д. 31',
+            facilities: ['Самообслуживание', 'Сладости', 'Быстрый Wi-Fi'],
+            rating: 3,
+            distance: 100
+        }]
+    });
 };
 
 module.exports.locationInfo = function(req, res) {
@@ -92,40 +96,5 @@ module.exports.addReview = function(req, res) {
         pageHeader: {
             title: 'Отзыв о Coffee Like'
         }
-    });
-};
-
-// ADDITIONAL FUNCTION
-var renderHomePage = function (res, req) {
-    res.render('locations-list', {
-        title: 'Поисковик Wi-Fi',
-
-        pageHeader: {
-            title: 'Поисковик Wi-Fi',
-            strapline: 'Найдите свободное место с Wi-Fi!'
-        },
-
-        sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +
-            'или работы.',
-
-        locations: [{
-            name: 'Кафетериус',
-            address: 'Казань, ул. Петербургская, д. 9',
-            facilities: ['Горячие напитки', 'Удобные пуфики', 'Быстрый Wi-Fi'],
-            rating: 5,
-            distance: 150
-        }, {
-            name: 'Starbucks',
-            address: 'Казань, ул. Петербургская, д. 1',
-            facilities: ['Горячие напитки', 'Сладости', 'Быстрый Wi-Fi'],
-            rating: 4,
-            distance: 130
-        }, {
-            name: 'Coffee Like',
-            address: 'Казань, ул. Пушкина, д. 31',
-            facilities: ['Самообслуживание', 'Сладости', 'Быстрый Wi-Fi'],
-            rating: 3,
-            distance: 100
-        }]
     });
 };

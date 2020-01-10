@@ -48,7 +48,7 @@ module.exports.reviewsReadOne = function (req, res) {
                         response = {
                             location: {
                                 name: location.name,
-                                id: req.params.locationId
+                                _id: req.params.locationId
                             },
                             review: review
                         };
