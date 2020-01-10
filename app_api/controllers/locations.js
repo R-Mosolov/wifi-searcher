@@ -45,7 +45,7 @@ module.exports.locationsListByDistance = function (req, res) {
         var locations = [];
         results.forEach(function (doc) {
             locations.push({
-                distance: radianCalculator().getDistanceFromRads(doc.dis),
+                distance: radianCalculator.getDistanceFromRads(doc.dis),
                 name: doc.obj.name,
                 address: doc.obj.address,
                 rating: doc.obj.rating,
@@ -146,7 +146,7 @@ var sendResponse = function (res, status, content) {
     res.json(content);
 };
 
-var radianCalculator = function () {
+var radianCalculator = (function () {
     var EARTH_RADIUS = 6371;
     var getDistanceFromRads = function (rads) {
         return parseFloat(rads * EARTH_RADIUS);
@@ -158,4 +158,4 @@ var radianCalculator = function () {
         getDistanceFromRads: getDistanceFromRads,
         getRadsFromDistance: getRadsFromDistance
     }
-};
+})();
