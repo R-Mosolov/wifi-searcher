@@ -127,7 +127,7 @@ module.exports.reviewsDeleteOne = function (req, res) {
     }
     Location
         .findById(req.params.locationId)
-        .select('review')
+        .select('reviews')
         .exec(
             function (err, location) {
                 if (!location) {
@@ -180,7 +180,7 @@ var addReview = function (req, res, location) {
             rating: req.body.rating,
             reviewText: req.body.reviewText
         });
-        location.save(function (err, locations) {
+        location.save(function (err, location) {
             var currentReview;
             if (err) {
                 sendResponse(res, 400, err);

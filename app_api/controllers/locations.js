@@ -32,16 +32,17 @@ module.exports.locationsCreate = function (req, res) {
 module.exports.locationsListByDistance = function (req, res) {
     var lng = parseFloat(req.query.lng);
     var lat = parseFloat(req.query.lat);
+    var maxDistance = parseFloat(req.query.maxDistance());
     var point = {
         type: 'Point',
         coordinates: [lng, lat]
     };
     var geoOptions = {
         spherical: true,
-        maxDistance: radianCalculator.getRadsFromDistance(20),
+        maxDistance: radianCalculator.getRadsFromDistance(maxDistance),
         num: 10
     };
-    Location.geoNear(point, geoOptions, function (err, results) {
+    Location.geoSearch(point, geoOptions, function (err, results) {
         var locations = [];
         results.forEach(function (doc) {
             locations.push({
