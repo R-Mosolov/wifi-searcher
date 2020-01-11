@@ -29,33 +29,18 @@ module.exports.locationsCreate = function (req, res) {
     });
 };
 
-module.exports.locationsListByDistance = function (req, res) {
-    var lng = parseFloat(req.query.lng);
-    var lat = parseFloat(req.query.lat);
-    var maxDistance = parseFloat(req.query.maxDistance());
-    var point = {
-        type: 'Point',
-        coordinates: [lng, lat]
-    };
-    var geoOptions = {
-        spherical: true,
-        maxDistance: radianCalculator.getRadsFromDistance(maxDistance),
-        num: 10
-    };
-    Location.geoSearch(point, geoOptions, function (err, results) {
-        var locations = [];
-        results.forEach(function (doc) {
-            locations.push({
-                distance: radianCalculator.getDistanceFromRads(doc.dis),
-                name: doc.obj.name,
-                address: doc.obj.address,
-                rating: doc.obj.rating,
-                facilities: doc.obj.facilities,
-                _id: doc.obj._id
-            });
-            sendResponse(res, 200, locations);
-        })
-    });
+module.exports.locationsRead = function (req, res) {
+    Location
+        .find()
+        .select('-reviews -workingTimes -_id -__v')
+        .exec(function (err, location) {
+                if (err) {
+                    sendResponse(res, 400, err);
+                } else {
+                    sendResponse(res, 200, location);
+                }
+            }
+        );
 };
 
 module.exports.locationsReadOne = function(req, res) {
@@ -139,22 +124,8 @@ module.exports.locationsDeleteOne = function (req, res) {
     }
 };
 
-// ADDITIONAL FUNCTIONS
+// ADDITIONAL FUNCTION
 var sendResponse = function (res, status, content) {
     res.status(status);
     res.json(content);
 };
-
-var radianCalculator = (function () {
-    var EARTH_RADIUS = 6371;
-    var getDistanceFromRads = function (rads) {
-        return parseFloat(rads * EARTH_RADIUS);
-    };
-    var getRadsFromDistance = function (distance) {
-        return parseFloat(distance / EARTH_RADIUS);
-    };
-    return {
-        getDistanceFromRads: getDistanceFromRads,
-        getRadsFromDistance: getRadsFromDistance
-    }
-})();
