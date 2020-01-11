@@ -3,7 +3,7 @@ var apiOptions = {
     server: 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://wifi-searcher.herokuapp.com/';
+    apiOptions.server = 'https://wifi-searcher.herokuapp.com';
 }
 
 // MAIN FUNCTIONS
@@ -87,6 +87,13 @@ module.exports.addReview = function(req, res) {
 
 // ADDITIONAL FUNCTION
 var renderHomePage = function (req, res, responseBody) {
+    var message = null;
+    if (!(responseBody instanceof Array)) {
+        message = 'Приносим извинения: API обнаружил ошибку';
+        responseBody = [];
+    } else if (!responseBody.length) {
+        message = 'Приносим извинения: места не найдены';
+    }
     res.render('locations-list', {
         title: 'Поисковик Wi-Fi',
         pageHeader: {
@@ -95,6 +102,7 @@ var renderHomePage = function (req, res, responseBody) {
         },
         sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +
             'или работы.',
-        locations: responseBody
+        locations: responseBody,
+        message: message
     });
 };

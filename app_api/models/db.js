@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var dbURI = 'mongodb://localhost:27017/wifi-searcher';
 
 if (process.env.NODE_ENV === 'production') {
-    dbURI = process.env.MONGODB_URI;
+    dbURI = `${process.env.MONGODB_URI}`;
 }
 
 mongoose.connect(dbURI);

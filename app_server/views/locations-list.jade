@@ -11,7 +11,10 @@ block content
         p #{pageHeader.strapline}
   .row
     .col-xs-12.col-sm-8
-      .row.list-group.col-sm-8
+      if message
+        .error.alert.alert-danger=message
+      else
+        .row.list-group.col-sm-8
 
       each location in locations
         .col-xs-12.list-group-item.shadow-sm.mb-3
