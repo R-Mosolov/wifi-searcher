@@ -24,56 +24,20 @@ module.exports.homeList = function(req, res) {
 };
 
 module.exports.locationInfo = function(req, res) {
-    res.render('location-info', {
-        title: 'Coffee Like | Поисковик Wi-Fi',
-        pageHeader: {
-            title: 'Coffee Like'
-        },
-        sidebar: {
-            context: 'Место "Coffee Like" размещено здесь потому, что оно обладает доступным Wi-Fi и просторными ' +
-                'креслами для работы на ноутбуке.',
-            callToAction: 'Если Вы уже посещали это место, то будем очень рады получить Ваш отзыв о нём. Вы ' +
-                'поможете нам стать лучше!'
-        },
-        location: {
-            name: 'Coffee Like',
-            address: 'Казань, ул. Пушкина, д. 31',
-            rating: 3,
-            facilities: ['Свежий кофе', 'Быстрый Wi-Fi', 'Стильный интерьер', 'Бесплатная парковка',
-                'Хороший вид из окна'],
-            coordinates: {
-                lng: 49.124563999999964,
-                lat: 55.793598
-            },
-            workingTimes: [{
-                days: 'Пн-Пт',
-                opening: '7:00',
-                closing: '19:00',
-                closed: false
-            }, {
-                days: 'Сб',
-                opening: '8:00',
-                closing: '17:00',
-                closed: false
-            }, {
-                days: 'Вс',
-                closed: true
-            }]
-        },
-        reviews: [{
-            reviewNumber: 1,
-            author: 'Сергей С.',
-            rating: 4,
-            date: '26 декабря 2019',
-            reviewText: 'В целом, здесь неплохо. Правда, очень медленный Wi-Fi :('
-        }, {
-            reviewNumber: 2,
-            author: 'Роман М.',
-            rating: 5,
-            date: '25 декабря 2019',
-            reviewText: 'Какое потрясающее место! Я обязательно вернусь сюда ещё раз.'
-        }]
-    });
+    var requestOptions, path;
+    path = '/api/locations/' + req.params.locationId;
+    requestOptions = {
+        url: apiOptions.server + path,
+        method: 'GET',
+        json: {}
+    };
+    request(
+        requestOptions,
+        function (err, response, body) {
+            var data = body;
+            renderDetailPage(req, res, data);
+        }
+    );
 };
 
 module.exports.addReview = function(req, res) {
@@ -85,7 +49,7 @@ module.exports.addReview = function(req, res) {
     });
 };
 
-// ADDITIONAL FUNCTION
+// ADDITIONAL FUNCTIONS
 var renderHomePage = function (req, res, responseBody) {
     res.render('locations-list', {
         title: 'Поисковик Wi-Fi',
@@ -96,5 +60,21 @@ var renderHomePage = function (req, res, responseBody) {
         sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +
             'или работы.',
         locations: responseBody
+    });
+};
+
+var renderDetailPage = function (req, res, locationDetail) {
+    res.render('location-info', {
+        title: locationDetail.name + ' | Поисковик Wi-Fi',
+        pageHeader: {
+            title: locationDetail.name
+        },
+        sidebar: {
+            context: 'Место "Coffee Like" размещено здесь потому, что оно обладает доступным Wi-Fi и просторными ' +
+                'креслами для работы на ноутбуке.',
+            callToAction: 'Если Вы уже посещали это место, то будем очень рады получить Ваш отзыв о нём. Вы ' +
+                'поможете нам стать лучше!'
+        },
+        location: locationDetail
     });
 };
