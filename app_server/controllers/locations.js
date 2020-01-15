@@ -74,6 +74,20 @@ module.exports.locationInfo = function(req, res) {
             reviewText: 'Какое потрясающее место! Я обязательно вернусь сюда ещё раз.'
         }]
     });
+
+var requestOptions, path;
+    path = '/api/locations/' + req.params.name;
+    requestOptions = {
+        url: apiOptions.server + path,
+        method: 'GET',
+        json: {}
+    };
+    request(
+        requestOptions,
+        function (err, response, body) {
+            renderDetailsPage(req, res, body);
+        }
+    );
 };
 
 module.exports.addReview = function(req, res) {
@@ -102,7 +116,23 @@ var renderHomePage = function (req, res, responseBody) {
         },
         sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +
             'или работы.',
-        locations: responseBody,
-        message: message
+        message: message,
+        locations: responseBody
+    });
+};
+
+var renderDetailsPage = function (req, res, locationDetails) {
+    res.render('location-info', {
+        title: locationDetails.name + ' | Поисковик Wi-Fi',
+        pageHeader: {
+            title: locationDetails.name
+        },
+        sidebar: {
+            context: 'Место "Coffee Like" размещено здесь потому, что оно обладает доступным Wi-Fi и просторными ' +
+                'креслами для работы на ноутбуке.',
+            callToAction: 'Если Вы уже посещали это место, то будем очень рады получить Ваш отзыв о нём. Вы ' +
+                'поможете нам стать лучше!'
+        },
+        location: locationDetails
     });
 };
