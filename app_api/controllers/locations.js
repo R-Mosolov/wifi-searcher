@@ -5,6 +5,7 @@ var Location = mongoose.model('Location');
 module.exports.locationsCreate = function (req, res) {
     Location.create({
         name: req.body.name,
+        path: 'id' + Math.floor(Math.random() * 10000000).toString(),
         address: req.body.address,
         facilities: req.body.facilities,
         rating: req.body.rating,
@@ -32,7 +33,7 @@ module.exports.locationsCreate = function (req, res) {
 module.exports.locationsRead = function (req, res) {
     Location
         .find()
-        .select('-reviews -workingTimes -__v')
+        .select('-reviews -workingTimes -_id -__v')
         .exec(function (err, location) {
                 if (err) {
                     sendResponse(res, 400, err);

@@ -50,6 +50,10 @@ var locationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    path: {
+        type: String,
+        required: false
+    },
     address: {
         type: String,
         required: false
