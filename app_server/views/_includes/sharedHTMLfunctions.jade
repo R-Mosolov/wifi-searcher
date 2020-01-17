@@ -1,8 +1,8 @@
 mixin generateRating(rating)
   - for (var i = 0; i < rating; i++)
-    img(src='/images/star/star-fill.svg', style='width: 22px')
+  img(src='/images/star/star-fill.svg', style='width: 22px')
   - for (var i = rating; i < 5; i++)
-    img(src='/images/star/star.svg', style='width: 22px')
+  img(src='/images/star/star.svg', style='width: 22px')
 
 mixin formatDate(originalDate)
   - var date = new Date(originalDate);
