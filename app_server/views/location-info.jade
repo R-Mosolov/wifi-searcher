@@ -16,25 +16,25 @@ block content
               h2.panel-title Адрес
             .panel-body
               p=location.address
-          .panel.panel-primary
-            .panel-heading
-              h2.panel-title Часы работы
-            .panel-body
-              each time in location.workingTimes
-                | #{time.days},
-                | &nbsp;
-                if time.closed
-                  | Закрыто
-                else
-                  | #{time.opening}-#{time.closing}
-                  br
+          //.panel.panel-primary
+          //  .panel-heading
+          //    h2.panel-title Часы работы
+          //  .panel-body
+          //    each time in location.workingTimes
+          //      | #{time.days},
+          //      | &nbsp;
+          //      if time.closed
+          //        | Закрыто
+          //      else
+          //        | #{time.opening}-#{time.closing}
+          //        br
           .panel.panel-primary
             .panel-heading
               h2.panel-title.mt-3 Преимущества места
-            .panel-body
-              each facility in location.facilities
-                span.badge.badge-pill.badge-info=facility
-                | &nbsp;
+            //.panel-body
+            //  each facility in location.facilities
+            //    span.badge.badge-pill.badge-info=facility
+            //    | &nbsp;
 
         .col-xs-12.col-sm-3.location-map
           .panel.panel-primary
@@ -50,32 +50,21 @@ block content
               h2.panel-title.mt-4.mt-lg-4 Отзывы посетителей
             .panel-body.review-container
 
-              each review in reviews
-                .card.mb-3
-                  h5.card-header
-                    | Отзыв #{review.reviewNumber}
-                    | &nbsp;
-                    span.rating
-                      +generateRating(review.rating)
-                  .card-body
-                    h5.card-title
-                      span.reviewAuthor=review.author
-                      | &nbsp;
-                      small.reviewTimestamp=review.date
-                    p.card-text=review.reviewText
-              a.btn.btn-success.pull-right(href='/location/review/new') Добавить отзыв
+              // each review in reviews
+              //   .card.mb-3
+              //     h5.card-header
+              //       | Отзыв #{review.reviewNumber}
+              //       | &nbsp;
+              //       span.rating
+              //         +generateRating(review.rating)
+              //     .card-body
+              //       h5.card-title
+              //         span.reviewAuthor=review.author
+              //         | &nbsp;
+              //         small.reviewTimestamp=review.date
+              //       p.card-text=review.reviewText
+              // a.btn.btn-success.pull-right(href='/location/review/new') Добавить отзыв
 
     .col-xs-12.col-sm-3
       p.lead.mt-4.mt-lg-0=sidebar.context
       p.mt-4.mt-lg-0=sidebar.callToAction
-
-    script.
-      var map;
-      function initMap() {
-        map=new google.maps.Map(document.getElementById('map'), {
-          center: {lng: #{location.coordinates.lng}, lat: #{location.coordinates.lat}},
-          zoom: 17
-        });
-      }
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDed4x8NTwjOt6D_nGPszsaclmSqRK9gtA&callback=initMap' +
-    '&language=ru&region=RU', async='', defer='')

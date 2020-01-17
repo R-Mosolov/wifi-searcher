@@ -48,7 +48,7 @@ module.exports.reviewsReadOne = function (req, res) {
                         response = {
                             location: {
                                 name: location.name,
-                                _id: req.params.locationId
+                                _id: req.params.path
                             },
                             review: review
                         };
@@ -61,20 +61,20 @@ module.exports.reviewsReadOne = function (req, res) {
             });
         } else {
             sendResponse(res, 404, {
-                'message': 'Object not found, locationId and reviewId are required'
+                'message': 'Object not found, path and reviewId are required'
             });
         }
 };
 
 module.exports.reviewsUpdateOne = function (req, res) {
-    if (!req.params.locationId || !res.params.reviewId) {
+    if (!req.params.path || !res.params.reviewId) {
         sendResponse(res, 404, {
             'message': 'Not found, location ID and review ID are required'
         });
         return;
     }
     Location
-        .findById(locationId)
+        .findById(path)
         .select('reviews')
         .exec(
             function (err, location) {
@@ -116,7 +116,7 @@ module.exports.reviewsUpdateOne = function (req, res) {
 };
 
 module.exports.reviewsDeleteOne = function (req, res) {
-    if (!req.params.locationId || !req.params.reviewId) {
+    if (!req.params.path || !req.params.reviewId) {
         sendResponse(res, 404, {
             'message': 'Not found, location ID and review ID are required'
         });
@@ -126,7 +126,7 @@ module.exports.reviewsDeleteOne = function (req, res) {
         return;
     }
     Location
-        .findById(req.params.locationId)
+        .findById(req.params.path)
         .select('reviews')
         .exec(
             function (err, location) {
@@ -193,9 +193,9 @@ var addReview = function (req, res, location) {
     }
 };
 
-var updateAverageRating = function (locationId) {
+var updateAverageRating = function (path) {
     Location
-        .findById(locationId)
+        .findById(path)
         .select('rating reviews')
         .exec(
             function (err, location) {

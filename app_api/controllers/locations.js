@@ -46,7 +46,9 @@ module.exports.locationsRead = function (req, res) {
 
 module.exports.locationsReadOne = function(req, res) {
     Location
-        .findById(req.params.locationId)
+        .findOne({
+            path: req.params.path
+        })
         .exec(function(err, location) {
             if (!location) {
                 sendResponse(res, 404, {
@@ -62,13 +64,13 @@ module.exports.locationsReadOne = function(req, res) {
 };
 
 module.exports.locationsUpdateOne = function (req, res) {
-    if (!req.params.locationId) {
+    if (!req.params.path) {
         sendResponse(req, 404, {
             'message': 'Not found, location ID is required'
         });
     }
     Location
-        .findById(req.params.locationId)
+        .findById(req.params.path)
         .select('-rating -reviews')
         .exec(
             function (err, location) {
@@ -109,10 +111,10 @@ module.exports.locationsUpdateOne = function (req, res) {
 };
 
 module.exports.locationsDeleteOne = function (req, res) {
-    var locationId = req.params.locationId;
-    if (locationId) {
+    var path = req.params.path;
+    if (path) {
         Location
-            .findByIdAndRemove(locationId)
+            .findByIdAndRemove(path)
             .exec(function (err) {
                 if (err) {
                     sendResponse(res, 400, err);
