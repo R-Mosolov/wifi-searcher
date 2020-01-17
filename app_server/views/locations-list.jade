@@ -15,7 +15,6 @@ block content
         .error.alert.alert-danger=message
       else
         .row.list-group.col-sm-8
-
       each location in locations
         .col-xs-12.list-group-item.shadow-sm.mb-3
           h4
@@ -30,6 +29,5 @@ block content
             each facility in location.facilities
               span.badge.badge-pill.badge-info=facility
               | &nbsp;
-
     .col-xs-12.col-sm-4
       p.lead=sidebar

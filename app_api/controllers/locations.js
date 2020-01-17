@@ -6,6 +6,7 @@ module.exports.locationsCreate = function (req, res) {
     Location.create({
         name: req.body.name,
         path: 'id' + Math.floor(Math.random() * 10000000).toString(),
+        coordinates: req.body.coordinates,
         address: req.body.address,
         facilities: req.body.facilities,
         rating: req.body.rating,
@@ -33,7 +34,6 @@ module.exports.locationsCreate = function (req, res) {
 module.exports.locationsRead = function (req, res) {
     Location
         .find()
-        .select('-reviews -workingTimes -_id -__v')
         .exec(function (err, location) {
                 if (err) {
                     sendResponse(res, 400, err);
@@ -70,7 +70,9 @@ module.exports.locationsUpdateOne = function (req, res) {
         });
     }
     Location
-        .findById(req.params.path)
+        .findOne({
+            path: req.params.path
+        })
         .select('-rating -reviews')
         .exec(
             function (err, location) {
@@ -84,6 +86,8 @@ module.exports.locationsUpdateOne = function (req, res) {
                     return;
                 }
                 location.name = req.body.name;
+                location.path = req.body.path;
+                location.coordinates = req.body.coordinates;
                 location.address = req.body.address;
                 location.facilities = req.body.facilities;
                 location.rating = req.body.rating;

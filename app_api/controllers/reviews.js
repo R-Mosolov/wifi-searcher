@@ -3,10 +3,12 @@ var Location = mongoose.model('Location');
 
 // MAIN FUNCTIONS
 module.exports.reviewsCreate = function (req, res) {
-    var locationId = req.params.locationId;
-    if (locationId) {
+    var path = req.params.path;
+    if (path) {
         Location
-            .findById(locationId)
+            .findOne({
+                path: req.params.path
+            })
             .select('reviews')
             .exec(
                 function (err, location) {
@@ -19,21 +21,23 @@ module.exports.reviewsCreate = function (req, res) {
             );
     } else {
         sendResponse(res, 404, {
-            'message': 'Not found, locationId required'
+            'message': 'Not found, path required'
         });
     }
 };
 
 module.exports.reviewsReadOne = function (req, res) {
-    if (req.params && req.params.locationId && req.params.reviewId) {
+    if (req.params && req.params.path && req.params.reviewId) {
         Location
-            .findById(req.params.locationId)
+            .findOne({
+                path: req.params.path
+            })
             .select('name reviews')
             .exec(function (err, location) {
                 var response, review;
                 if (!location) {
                     sendResponse(res, 404, {
-                        'message': 'LocationId not found'
+                        'message': 'Path not found'
                     });
                 } else if (err) {
                     sendResponse(res, 400, err);
@@ -69,18 +73,20 @@ module.exports.reviewsReadOne = function (req, res) {
 module.exports.reviewsUpdateOne = function (req, res) {
     if (!req.params.path || !res.params.reviewId) {
         sendResponse(res, 404, {
-            'message': 'Not found, location ID and review ID are required'
+            'message': 'Not found, path and review ID are required'
         });
         return;
     }
     Location
-        .findById(path)
+        .findOne({
+            path: req.params.path
+        })
         .select('reviews')
         .exec(
             function (err, location) {
                 if (!location) {
                     sendResponse(res, 404, {
-                        'message': 'Location ID not found'
+                        'message': 'Path not found'
                     });
                     return;
                 } else if (err) {
@@ -118,7 +124,7 @@ module.exports.reviewsUpdateOne = function (req, res) {
 module.exports.reviewsDeleteOne = function (req, res) {
     if (!req.params.path || !req.params.reviewId) {
         sendResponse(res, 404, {
-            'message': 'Not found, location ID and review ID are required'
+            'message': 'Not found, path and review ID are required'
         });
         return;
     } else if (err) {
@@ -126,13 +132,15 @@ module.exports.reviewsDeleteOne = function (req, res) {
         return;
     }
     Location
-        .findById(req.params.path)
+        .findOne({
+            path: req.params.path
+        })
         .select('reviews')
         .exec(
             function (err, location) {
                 if (!location) {
                     sendResponse(res, 404, {
-                        'message': 'Location ID not found'
+                        'message': 'Path not found'
                     });
                     return;
                 } else if (err) {
@@ -172,7 +180,7 @@ var sendResponse = function (res, status, content) {
 var addReview = function (req, res, location) {
     if (!location) {
         sendResponse(res, 404, {
-            'message': 'Location ID not found'
+            'message': 'Path not found'
         });
     } else {
         location.reviews.push({
@@ -195,7 +203,9 @@ var addReview = function (req, res, location) {
 
 var updateAverageRating = function (path) {
     Location
-        .findById(path)
+        .findOne({
+            path: req.params.path
+        })
         .select('rating reviews')
         .exec(
             function (err, location) {
