@@ -48,10 +48,14 @@ var workingTimeSchema = new mongoose.Schema({
 var locationSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: false
     },
     path: {
         type: String,
+        required: false
+    },
+    coordinates: {
+        type: Object,
         required: false
     },
     address: {
