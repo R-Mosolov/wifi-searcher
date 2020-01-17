@@ -3,3 +3,13 @@ mixin generateRating(rating)
     img(src='/images/star/star-fill.svg', style='width: 22px')
   - for (var i = rating; i < 5; i++)
     img(src='/images/star/star.svg', style='width: 22px')
+
+mixin formatDate(originalDate)
+  - var date = new Date(originalDate);
+  - var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля',
+  -                   'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  - var day = date.getDay();
+  - var month = monthNames[date.getMonth()];
+  - var year = date.getFullYear();
+  - var result = `${day} ${month} ${year}`;
+  = result
