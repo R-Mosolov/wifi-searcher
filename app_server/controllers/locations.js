@@ -48,7 +48,7 @@ module.exports.addReview = function(req, res) {
     });
 };
 
-// ADDITIONAL FUNCTION
+// ADDITIONAL FUNCTIONS
 var renderHomePage = function (req, res, responseBody) {
     var message = null;
     if (!(responseBody instanceof Array)) {
