@@ -24,28 +24,19 @@ module.exports.homeList = function(req, res) {
 };
 
 module.exports.locationInfo = function(req, res) {
-    var requestOptions, path;
-    path = '/api/locations/' + req.params.path;
-    requestOptions = {
-        url: apiOptions.server + path,
-        method: 'GET',
-        json: {}
-    };
-    request(
-        requestOptions,
-        function (err, response, body) {
-            renderDetailsPage(req, res, body);
-        }
-    );
+    getLocationInfo(req, res, function (req, res, responseData) {
+        renderDetailsPage(req, res, responseData);
+    });
 };
 
 module.exports.addReview = function(req, res) {
-    res.render('location-review-form', {
-        title: 'Добавить отзыв | Поисковик Wi-Fi',
-        pageHeader: {
-            title: 'Отзыв о Coffee Like'
-        }
+    getLocationInfo(req, res, function (req, res, responseData) {
+        renderReviewForm(req, res, responseData);
     });
+};
+
+module.exports.createReview = function(req, res) {
+    renderReviewForm(req, res);
 };
 
 // ADDITIONAL FUNCTIONS
@@ -83,5 +74,52 @@ var renderDetailsPage = function (req, res, locationDetails) {
                 'поможете нам стать лучше!'
         },
         location: locationDetails
+    });
+};
+
+var renderReviewForm = function (req, res, locationDetails) {
+    res.render('location-review-form', {
+        title: `Отзыв на ${locationDetails.name}`,
+        pageHeader: {
+            title: `Отзыв на ${locationDetails.name}`
+        }
+    });
+};
+
+var getLocationInfo = function (req, res, callback) {
+    var requestOptions, path;
+    path = '/api/locations/' + req.params.path;
+    requestOptions = {
+        url: apiOptions.server + path,
+        method: 'GET',
+        json: {}
+    };
+    request(
+        requestOptions,
+        function (err, response, body) {
+            if (response.statusCode === 200) {
+                callback(req, res, body);
+            } else {
+                _showError(req, res, response.statusCode);
+            }
+        }
+    );
+};
+
+var _showError = function (req, res, status) {
+    var title, content;
+    if (status === 404) {
+        title = 'Ошибка 404: страница не найдена';
+        content = 'К сожалению, мы не смогли найти искомую Вами страницу. Вероятно, она не существует ' +
+            'или была удалена. Приносим извинения!';
+    } else {
+        title = `Ошибка ${status}: что-то пошло не так`;
+        content = 'К сожалению, случилось что-то неожиданное. Мы не можем найти искомую Вами страницу.' +
+            ' Приносим извинения!'
+    }
+    res.status(status);
+    res.render('error-message', {
+        title: title,
+        content: content
     });
 };

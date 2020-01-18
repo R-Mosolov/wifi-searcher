@@ -1,5 +1,5 @@
 module.exports.about = function(req, res) {
-    res.render('generic-text', {
+    res.render('about-us', {
         title: 'О нас | Поисковик Wi-Fi',
 
         content: {
