@@ -65,7 +65,7 @@ module.exports.reviewsReadOne = function (req, res) {
             });
         } else {
             sendResponse(res, 404, {
-                'message': 'Object not found, path and reviewId are required'
+                'message': 'Object not found, path and review ID are required'
             });
         }
 };

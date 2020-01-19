@@ -36,7 +36,29 @@ module.exports.addReview = function(req, res) {
 };
 
 module.exports.createReview = function(req, res) {
-    renderReviewForm(req, res);
+    var requestOptions, path, postData;
+    path = `/api/locations/${req.params.path}/reviews`;
+    postData = {
+        reviewNumber: Math.random() * 100,
+        author: req.body.name,
+        rating: parseInt(req.body.rating, 10),
+        reviewText: req.body.review
+    };
+    requestOptions = {
+        url: apiOptions.server + path,
+        method: 'POST',
+        json: postData
+    };
+    request(
+        requestOptions,
+        function (err, response, body) {
+            if (response.statusCode === 201) {
+                res.redirect(`/location/${req.params.path}`);
+            } else {
+                _showError(req, res, response.statusCode);
+            }
+        }
+    );
 };
 
 // ADDITIONAL FUNCTIONS
@@ -82,7 +104,8 @@ var renderReviewForm = function (req, res, locationDetails) {
         title: `Отзыв на ${locationDetails.name}`,
         pageHeader: {
             title: `Отзыв на ${locationDetails.name}`
-        }
+        },
+        reviewId: locationDetails.reviewNumber
     });
 };
 
@@ -114,8 +137,7 @@ var _showError = function (req, res, status) {
             'или была удалена. Приносим извинения!';
     } else {
         title = `Ошибка ${status}: что-то пошло не так`;
-        content = 'К сожалению, случилось что-то неожиданное. Мы не можем найти искомую Вами страницу.' +
-            ' Приносим извинения!'
+        content = 'К сожалению, случилось что-то неожиданное. Приносим извинения!'
     }
     res.status(status);
     res.render('error-message', {
