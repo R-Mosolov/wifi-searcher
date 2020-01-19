@@ -8,7 +8,7 @@ mixin formatDate(originalDate)
   - var date = new Date(originalDate);
   - var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля',
   -                   'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-  - var day = date.getDay();
+  - var day = date.getDate();
   - var month = monthNames[date.getMonth()];
   - var year = date.getFullYear();
   - var result = `${day} ${month} ${year}`;

@@ -8,6 +8,11 @@ block content
   .row
     .col-xs-12.col-sm-12
       form.form-horizontal(action='', method='post', role='form')
+        .form-group.d-none
+          label.col-xs-10.col-sm-12.text-left.control-label(for='date') Дата создания отзыва
+          .col-xs-10.col-sm-12
+            input#date.form-control(name='date', value=Date.now(), disabled)
+
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='name') Ваши имя и фамилия
           .col-xs-10.col-sm-12
@@ -22,14 +27,6 @@ block content
               option 3
               option 2
               option 1
-
-        .form-group
-          label.col-xs-10.col-sm-12.text-left.control-label(for='rosette') На месте есть розетка
-          .col-xs-10.col-sm-12
-            select.form-control.input-sm(name='rosette')
-              option Не знаю
-              option Да
-              option Нет
 
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='review') Ваш отзыв

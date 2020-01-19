@@ -47,23 +47,23 @@ block content
         .col-xs-12.col-sm-12
           .panel.panel-primary.review-panel
             .panel-heading.mb-4
-              h2.panel-title.mt-4.mt-lg-4 Отзывы посетителей
+              h2.panel-title.mt-4.mt-lg-0 Отзывы посетителей
             .panel-body.review-container
               if location
-               each review in location.reviews
-                 .card.mb-3
-                   h5.card-header
-                     | Отзыв #{review.reviewNumber}
-                     | &nbsp;
-                     span.rating
-                       +generateRating(review.rating)
-                   .card-body
-                     h5.card-title
-                       span.reviewAuthor=review.author
-                       | &nbsp;
-                       small.reviewDate
-                        +formatDate(review.date)
-                     p.card-text=review.reviewText
+                each review in location.reviews
+                  .card.mb-3
+                    h5.card-header
+                      .d-flex.justify-content-between
+                        .left-block
+                          | Отзыв от&nbsp;
+                          +formatDate(review.date)
+                        .right-block
+                          span.rating
+                            +generateRating(review.rating)
+                    .card-body
+                      h5.card-title
+                        span.reviewAuthor=review.author
+                      p.card-text=review.reviewText
                else
                  p.mb-4 У этого места пока нет отзывов. Станьте №1!
                a.btn.btn-success.pull-right(href='/location/#{location.path}/review/new') Добавить отзыв

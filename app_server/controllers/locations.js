@@ -39,7 +39,6 @@ module.exports.createReview = function(req, res) {
     var requestOptions, path, postData;
     path = `/api/locations/${req.params.path}/reviews`;
     postData = {
-        reviewNumber: Math.random() * 100,
         author: req.body.name,
         rating: parseInt(req.body.rating, 10),
         reviewText: req.body.review
@@ -104,14 +103,13 @@ var renderReviewForm = function (req, res, locationDetails) {
         title: `Отзыв на ${locationDetails.name}`,
         pageHeader: {
             title: `Отзыв на ${locationDetails.name}`
-        },
-        reviewId: locationDetails.reviewNumber
+        }
     });
 };
 
 var getLocationInfo = function (req, res, callback) {
     var requestOptions, path;
-    path = '/api/locations/' + req.params.path;
+    path = `/api/locations/${req.params.path}`;
     requestOptions = {
         url: apiOptions.server + path,
         method: 'GET',
