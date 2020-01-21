@@ -17,8 +17,7 @@ var reviewSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: false,
-        'default': Date.now
+        required: false
     }
 });
 

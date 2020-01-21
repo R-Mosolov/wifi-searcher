@@ -35,13 +35,13 @@ module.exports.addReview = function(req, res) {
     });
 };
 
-module.exports.createReview = function(req, res) {
+module.exports.sendReview = function(req, res) {
     var requestOptions, path, postData;
     path = `/api/locations/${req.params.path}/reviews`;
     postData = {
-        author: req.body.name,
+        author: req.body.author,
         rating: parseInt(req.body.rating, 10),
-        reviewText: req.body.review
+        reviewText: req.body.reviewText
     };
     requestOptions = {
         url: apiOptions.server + path,
@@ -50,9 +50,9 @@ module.exports.createReview = function(req, res) {
     };
     request(
         requestOptions,
-        function (err, response, body) {
+        function (err, response) {
             if (response.statusCode === 201) {
-                res.redirect(`/location/${req.params.path}`);
+                res.redirect('/');
             } else {
                 _showError(req, res, response.statusCode);
             }

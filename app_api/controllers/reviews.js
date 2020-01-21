@@ -7,7 +7,7 @@ module.exports.reviewsCreate = function (req, res) {
     if (path) {
         Location
             .findOne({
-                path: req.params.path
+                path: path
             })
             .select('reviews')
             .exec(
@@ -102,7 +102,7 @@ module.exports.reviewsUpdateOne = function (req, res) {
                     } else {
                         currentReview.author = req.params.author;
                         currentReview.rating = req.params.rating;
-                        currentReview.reviewText = req.params.reviewText;
+                        currentReview.review = req.params.review;
                     }
                     location.save(function (err, location) {
                         if (err) {
@@ -186,14 +186,15 @@ var addReview = function (req, res, location) {
         location.reviews.push({
             author: req.body.author,
             rating: req.body.rating,
-            reviewText: req.body.reviewText
+            reviewText: req.body.reviewText,
+            date: req.body.date
         });
         location.save(function (err, location) {
             var currentReview;
             if (err) {
                 sendResponse(res, 400, err);
             } else {
-                updateAverageRating(location._id);
+                // updateAverageRating(location._id);
                 currentReview = location.reviews[location.reviews.length - 1];
                 sendResponse(res, 201, currentReview);
             }
@@ -201,37 +202,37 @@ var addReview = function (req, res, location) {
     }
 };
 
-var updateAverageRating = function (path) {
-    Location
-        .findOne({
-            path: req.params.path
-        })
-        .select('rating reviews')
-        .exec(
-            function (err, location) {
-                if (!err) {
-                    calculateAverageRating(location);
-                }
-            }
-        );
-};
-
-var calculateAverageRating = function (location) {
-    var i, reviewCount, ratingAverage, ratingTotal;
-    if (location.reviews && location.reviews.length > 0) {
-        reviewCount = location.reviews.length;
-        ratingTotal = 0;
-        for (i = 0; i < reviewCount; i++) {
-            ratingTotal += location.reviews[i].rating;
-        }
-        ratingAverage = parseInt(ratingTotal / reviewCount, 10);
-        location.rating = ratingAverage;
-        location.save(function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('Average rating updated to ' + ratingAverage);
-            }
-        });
-    }
-};
+// var updateAverageRating = function (req) {
+//     Location
+//         .findOne({
+//             path: req.params.path
+//         })
+//         .select('rating reviews')
+//         .exec(
+//             function (err, location) {
+//                 if (!err) {
+//                     calculateAverageRating(location);
+//                 }
+//             }
+//         );
+// };
+//
+// var calculateAverageRating = function (location) {
+//     var i, reviewCount, ratingAverage, ratingTotal;
+//     if (location.reviews && location.reviews.length > 0) {
+//         reviewCount = location.reviews.length;
+//         ratingTotal = 0;
+//         for (i = 0; i < reviewCount; i++) {
+//             ratingTotal += location.reviews[i].rating;
+//         }
+//         ratingAverage = parseInt(ratingTotal / reviewCount, 10);
+//         location.rating = ratingAverage;
+//         location.save(function (err) {
+//             if (err) {
+//                 console.log(err);
+//             } else {
+//                 console.log('Average rating updated to ' + ratingAverage);
+//             }
+//         });
+//     }
+// };

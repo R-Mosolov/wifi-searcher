@@ -34,7 +34,7 @@ module.exports.locationsCreate = function (req, res) {
 module.exports.locationsRead = function (req, res) {
     Location
         .find()
-        .select('-_id')
+        .select('-reviews')
         .exec(function (err, location) {
                 if (err) {
                     sendResponse(res, 400, err);

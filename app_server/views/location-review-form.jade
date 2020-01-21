@@ -14,14 +14,14 @@ block content
             input#date.form-control(name='date', value=Date.now(), disabled)
 
         .form-group
-          label.col-xs-10.col-sm-12.text-left.control-label(for='name') Ваши имя и фамилия
+          label.col-xs-10.col-sm-12.text-left.control-label(for='author') Ваши имя и фамилия
           .col-xs-10.col-sm-12
-            input#name.form-control(name='name', placeholder='Например, Иван И.')
+            input#author.form-control(name='author', placeholder='Например, Иван И.')
 
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='rating') Ваша оценка
           .col-xs-10.col-sm-12
-            select.form-control.input-sm(name='rating')
+            select#rating.form-control.input-sm(name='rating')
               option 5
               option 4
               option 3
@@ -29,9 +29,9 @@ block content
               option 1
 
         .form-group
-          label.col-xs-10.col-sm-12.text-left.control-label(for='review') Ваш отзыв
+          label.col-xs-10.col-sm-12.text-left.control-label(for='reviewText') Ваш отзыв
           .col-xs-10.col-sm-12
-            textarea#review.form-control(name='review', rows='5', placeholder='Опишите, пожалуйста, максимально ' +
+            textarea#reviewText.form-control(name='reviewText', rows='5', placeholder='Опишите, пожалуйста, максимально ' +
             'подробно, что именно Вам понравилось / не понравилось в этом месте.')
 
         .col-xs-10.col-sm-12

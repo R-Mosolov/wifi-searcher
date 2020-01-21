@@ -64,9 +64,9 @@ block content
                       h5.card-title
                         span.reviewAuthor=review.author
                       p.card-text=review.reviewText
-               else
-                 p.mb-4 У этого места пока нет отзывов. Станьте №1!
-               a.btn.btn-success.pull-right(href='/location/#{location.path}/review/new') Добавить отзыв
+                else
+                  p.mb-4 У этого места пока нет отзывов. Станьте №1!
+              a.btn.btn-success.pull-right(href='/location/#{location.path}/review/new') Добавить отзыв
     .col-xs-12.col-sm-3
       p.lead.mt-4.mt-lg-0=sidebar.context
       p.mt-4.mt-lg-0=sidebar.callToAction
