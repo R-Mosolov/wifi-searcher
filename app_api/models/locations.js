@@ -1,10 +1,6 @@
 var mongoose = require('mongoose');
 
 var reviewSchema = new mongoose.Schema({
-    reviewNumber: {
-        type: Number,
-        required: false
-    },
     author: {
         type: String,
         required: false
@@ -13,17 +9,16 @@ var reviewSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
-    date: {
-        type: Date,
-        required: false,
-        'default': Date.now
-    },
     reviewText: {
         type: String,
         required: false,
         minLength: 2,
         maxLength: 50
     },
+    date: {
+        type: Date,
+        required: false
+    }
 });
 
 var workingTimeSchema = new mongoose.Schema({

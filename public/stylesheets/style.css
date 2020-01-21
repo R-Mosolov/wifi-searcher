@@ -5,3 +5,48 @@
     height: 350px;
     width: 350px;
 }
+
+@media only screen and (max-width: 1200px) {
+    #navbarNav li {
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 991px) {
+    #map {
+        height: 70vw;
+        width: 70vw;
+    }
+}
+@media only screen and (max-width: 860px) {
+    #map {
+        height: 80vw;
+        width: 80vw;
+    }
+}
+@media only screen and (max-width: 767px)  {
+    #map {
+        height: 68vw;
+        width: 68vw;
+    }
+}
+@media only screen and (max-width: 575px)  {
+    #map {
+        height: 95vw;
+        width: 95vw;
+    }
+}
+@media only screen and (max-width: 414px)  {
+    #map {
+        height: 92vw;
+        width: 92vw;
+    }
+}
+@media only screen and (width: 320px) {
+    #navbarNav li {
+        text-align: center;
+    }
+    .text-break::before {
+        content: '___';
+        color: transparent;
+    }
+}

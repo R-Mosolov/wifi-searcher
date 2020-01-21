@@ -4,8 +4,9 @@ include _includes/sharedHTMLfunctions
 
 block content
   .row.page-header
-    .col-lg-3
-      h1=pageHeader.title
+    .col-lg-4
+      h1.mb-0=pageHeader.title
+      +generateRating(location.rating)
       hr
   .row
     .col-xs-12.col-sm-9
@@ -35,36 +36,36 @@ block content
               each facility in location.facilities
                 span.badge.badge-pill.badge-info=facility
                 | &nbsp;
-        .col-xs-12.col-sm-3.location-map
+        .col-xs-12.col-sm-12.col-md-12.col-lg-3.col-xl-3.location-map
           .panel.panel-primary
             .panel-heading
               h2.panel-title.mt-3.mt-lg-0 Местоположение
             .panel-body
-              .border.rounded
-                #map
+              #map
         .col-xs-12.col-sm-12
           .panel.panel-primary.review-panel
             .panel-heading.mb-4
-              h2.panel-title.mt-4.mt-lg-4 Отзывы посетителей
+              h2.panel-title.mt-4.mt-lg-0 Отзывы посетителей
             .panel-body.review-container
               if location
-               each review in location.reviews
-                 .card.mb-3
-                   h5.card-header
-                     | Отзыв #{review.reviewNumber}
-                     | &nbsp;
-                     span.rating
-                       +generateRating(review.rating)
-                   .card-body
-                     h5.card-title
-                       span.reviewAuthor=review.author
-                       | &nbsp;
-                       small.reviewTimestamp=review.date
-                     p.card-text=review.reviewText
-               else
-                 p.mb-4 У этого места пока нет отзывов. Станьте №1!
-               a.btn.btn-success.pull-right(href='/location/review/new') Добавить отзыв
-    .col-xs-12.col-sm-3
+                each review in location.reviews
+                  .card.mb-3
+                    h5.card-header
+                      .d-flex.justify-content-between
+                        .left-block
+                          | Отзыв от&nbsp;
+                          +formatDate(review.date)
+                        .right-block
+                          span.rating
+                            +generateRating(review.rating)
+                    .card-body
+                      h5.card-title
+                        span.reviewAuthor=review.author
+                      p.card-text=review.reviewText
+                else
+                  p.mb-4 У этого места пока нет отзывов. Станьте №1!
+              a.btn.btn-success.pull-right(href='/location/#{location.path}/review/new') Добавить отзыв
+    .col-xs-12.col-sm-12.col-md-12.col-lg-3.col-xl-3
       p.lead.mt-4.mt-lg-0=sidebar.context
       p.mt-4.mt-lg-0=sidebar.callToAction
 
