@@ -5,7 +5,7 @@ include _includes/sharedHTMLfunctions
 block content
   #banner.page-header.mb-3
     .row
-      .col-lg-4
+      .col-lg-6.col-xl-4
         h1 !{pageHeader.title}
         hr
         p #{pageHeader.strapline}
@@ -16,12 +16,16 @@ block content
       else
         .row.list-group.col-sm-8
         .dropdown
-          button#dropdownMenuButton.btn.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+          button#dropdownMenuButton.btn.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown',
+            aria-haspopup='true', aria-expanded='false')
             | Cортировать
           .dropdown-menu
-            a.dropdown-item(href='#') По рейтингу
-            a.dropdown-item(href='#') По расстоянию
-            a.dropdown-item(href='#') По числу отзывов
+            a.dropdown-item(href='#', onclick='alert("К сожалению, на текущем этапе разработки ПО функция сортировки ' +
+            'не работает. Приносим Вам извинения и просим вернуться к ней позднее.")') По рейтингу
+            a.dropdown-item(href='#', onclick='alert("К сожалению, на текущем этапе разработки ПО функция сортировки ' +
+            'не работает. Приносим Вам извинения и просим вернуться к ней позднее.")') По расстоянию
+            a.dropdown-item(href='#', onclick='alert("К сожалению, на текущем этапе разработки ПО функция сортировки ' +
+            'не работает. Приносим Вам извинения и просим вернуться к ней позднее.")') По числу отзывов
         each location in locations
           .col-xs-12.list-group-item.shadow-sm.mb-3
             h4
