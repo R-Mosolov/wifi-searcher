@@ -6,7 +6,7 @@ block content
   #banner.page-header.mb-3
     .row
       .col-lg-4
-        h1=pageHeader.title
+        h1 !{pageHeader.title}
         hr
         p #{pageHeader.strapline}
   .row
@@ -15,19 +15,26 @@ block content
         .error.alert.alert-danger=message
       else
         .row.list-group.col-sm-8
-      each location in locations
-        .col-xs-12.list-group-item.shadow-sm.mb-3
-          h4
-            a(href='/location/#{location.path}')=location.name
-            small &nbsp;
-              .col-sm-12.mt-2
-              span.badge.pull-right.badge-pill.badge-secondary #{location.distance} м.
+        .dropdown
+          button#dropdownMenuButton.btn.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            | Cортировать
+          .dropdown-menu
+            a.dropdown-item(href='#') По рейтингу
+            a.dropdown-item(href='#') По расстоянию
+            a.dropdown-item(href='#') По числу отзывов
+        each location in locations
+          .col-xs-12.list-group-item.shadow-sm.mb-3
+            h4
+              a(href='/location/#{location.path}')=location.name
               small &nbsp;
-              +generateRating(location.rating)
-          p.address=location.address
-          p
-            each facility in location.facilities
-              span.badge.badge-pill.badge-info=facility
-              | &nbsp;
+                .col-sm-12.mt-2
+                span.badge.pull-right.badge-pill.badge-secondary #{location.distance} м.
+                small &nbsp;
+                +generateRating(location.rating)
+            p.address=location.address
+            p
+              each facility in location.facilities
+                span.badge.badge-pill.badge-info=facility
+                | &nbsp;
     .col-xs-12.col-sm-4
       p.lead=sidebar

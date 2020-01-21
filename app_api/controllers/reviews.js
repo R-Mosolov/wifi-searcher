@@ -158,7 +158,7 @@ module.exports.reviewsDeleteOne = function (req, res) {
                             if (err) {
                                 sendResponse(res, 400, err);
                             } else {
-                                updateAverageRating(location._id);
+                                // updateAverageRating(location._id);
                                 sendResponse(res, 204, null);
                             }
                         });

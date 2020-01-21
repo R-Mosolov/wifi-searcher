@@ -72,7 +72,7 @@ var renderHomePage = function (req, res, responseBody) {
     res.render('locations-list', {
         title: 'Поисковик Wi-Fi',
         pageHeader: {
-            title: 'Поисковик Wi-Fi',
+            title: `Поисковик <span class='text-break'> Wi-Fi`,
             strapline: 'Найдите свободное место с Wi-Fi!'
         },
         sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +

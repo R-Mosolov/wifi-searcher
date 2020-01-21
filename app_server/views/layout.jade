@@ -25,5 +25,19 @@ html
     .container.pb-4.mb-4
       block content
 
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js')
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', crossorigin='anonymous',
+      integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=')
     script(src='/javascript/jquery.min.js')
     script(src='/bootstrap/js/bootstrap.js/bootstrap.min.js')
+
+    script(type='text/javascript').
+      $('.dropdown-toggle').on('click', function () {
+        $('.dropdown-menu').toggle();
+      });
+    script(type='text/javascript').
+      $('.navbar-toggler').on('click', function () {
+        $('#navbarNav').toggle();
+      });
