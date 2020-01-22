@@ -51,8 +51,8 @@ block content
                 each review in location.reviews
                   .card.mb-3
                     h5.card-header
-                      .d-flex.justify-content-between
-                        .left-block
+                      .d-flex.justify-content-between.flex-wrap
+                        .left-block.mb-1
                           | Отзыв от&nbsp;
                           +formatDate(review.date)
                         .right-block
