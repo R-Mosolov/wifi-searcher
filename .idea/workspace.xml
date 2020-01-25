@@ -14,6 +14,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -29,25 +30,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app_api" />
-      <recent name="$PROJECT_DIR$/app_api/routes" />
-      <recent name="$PROJECT_DIR$/public/images/star" />
-      <recent name="$PROJECT_DIR$/public/bootstrap/css" />
-      <recent name="$PROJECT_DIR$/public/bootstrap/css/themes" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public/bootstrap/css/themes" />
       <recent name="$PROJECT_DIR$/app_server/views" />
       <recent name="$PROJECT_DIR$/public/bootstrap/css" />
       <recent name="$PROJECT_DIR$/public/bootstrap" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app_client/angular-learning" />
+      <recent name="$PROJECT_DIR$/app_client/index" />
+      <recent name="$PROJECT_DIR$/app_api" />
+      <recent name="$PROJECT_DIR$/app_api/routes" />
+      <recent name="$PROJECT_DIR$/public/images/star" />
     </key>
   </component>
   <component name="RunManager">
@@ -99,26 +101,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1577226979330" />
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1579270931648">
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1579652524027">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579270931648" />
-    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1579270931645">
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579652524027" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1579652524024">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579270931645" />
-    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1579270931644">
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579652524024" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1579652524023">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579270931644" />
-    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1579270931646">
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579652524023" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1579652524025">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579270931646" />
-    <state x="229" y="89" key="SettingsEditor" timestamp="1578239396823">
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579652524025" />
+    <state x="229" y="89" key="SettingsEditor" timestamp="1579912299022">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578239396823" />
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1579912299022" />
     <state x="329" y="192" width="782" height="550" key="find.popup" timestamp="1577649582117">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

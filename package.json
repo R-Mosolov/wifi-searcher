@@ -10,6 +10,7 @@
     "npm": "~6.13.4"
   },
   "dependencies": {
+    "angular": "~1.7.9",
     "bootstrap": "~4.4.1",
     "bootstrap-icons": "~1.0.0-alpha2",
     "bootswatch": "~4.4.1",
