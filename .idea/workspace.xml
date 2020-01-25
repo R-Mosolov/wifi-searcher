@@ -34,22 +34,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/angular" />
+      <recent name="$PROJECT_DIR$/app_client/angular-learning" />
+      <recent name="$PROJECT_DIR$/app_client/index" />
+      <recent name="$PROJECT_DIR$/app_api" />
+      <recent name="$PROJECT_DIR$/app_api/routes" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public/bootstrap/css/themes" />
       <recent name="$PROJECT_DIR$/app_server/views" />
       <recent name="$PROJECT_DIR$/public/bootstrap/css" />
       <recent name="$PROJECT_DIR$/public/bootstrap" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app_client/angular-learning" />
-      <recent name="$PROJECT_DIR$/app_client/index" />
-      <recent name="$PROJECT_DIR$/app_api" />
-      <recent name="$PROJECT_DIR$/app_api/routes" />
-      <recent name="$PROJECT_DIR$/public/images/star" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,13 +117,13 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579652524025" />
-    <state x="229" y="89" key="SettingsEditor" timestamp="1579912299022">
+    <state x="229" y="89" key="SettingsEditor" timestamp="1579982136669">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1579912299022" />
-    <state x="329" y="192" width="782" height="550" key="find.popup" timestamp="1577649582117">
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1579982136669" />
+    <state x="329" y="194" width="782" height="550" key="find.popup" timestamp="1579984744840">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="329" y="192" width="782" height="550" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1577649582117" />
+    <state x="329" y="194" width="782" height="550" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1579984744840" />
   </component>
 </project>

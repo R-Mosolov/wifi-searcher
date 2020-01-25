@@ -8,19 +8,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // MAIN FUNCTIONS
 module.exports.homeList = function(req, res) {
-    var requestOptions, path;
-    path = '/api/locations';
-    requestOptions = {
-        url: apiOptions.server + path,
-        method: 'GET',
-        json: {}
-    };
-    request(
-        requestOptions,
-        function (err, response, body) {
-            renderHomePage(req, res, body);
-        }
-    );
+    renderHomePage(req, res);
 };
 
 module.exports.locationInfo = function(req, res) {
@@ -61,14 +49,7 @@ module.exports.sendReview = function(req, res) {
 };
 
 // ADDITIONAL FUNCTIONS
-var renderHomePage = function (req, res, responseBody) {
-    var message = null;
-    if (!(responseBody instanceof Array)) {
-        message = 'Приносим извинения: API обнаружил ошибку';
-        responseBody = [];
-    } else if (!responseBody.length) {
-        message = 'Приносим извинения: места не найдены';
-    }
+var renderHomePage = function (req, res) {
     res.render('locations-list', {
         title: 'Поисковик Wi-Fi',
         pageHeader: {
@@ -76,9 +57,7 @@ var renderHomePage = function (req, res, responseBody) {
             strapline: 'Найдите свободное место с Wi-Fi!'
         },
         sidebar: 'Наше веб-приложение, "Поисковик Wi-Fi", поможет Вам найти подходящие, свободные места для отдыха ' +
-            'или работы.',
-        message: message,
-        locations: responseBody
+            'или работы.'
     });
 };
 
