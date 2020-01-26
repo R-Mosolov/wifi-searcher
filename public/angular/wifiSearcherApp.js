@@ -1,6 +1,16 @@
 angular
     .module('wifiSearcherApp', [])
-    .controller('locationListCtrl', locationListCtrl);
+    .controller('locationListCtrl', locationListCtrl)
+    .directive('ratingStars', ratingStars);
+
+function ratingStars() {
+    return {
+        scope: {
+            thisRating: '=rating'
+        },
+        templateUrl: '/angular/rating-stars.html'
+    };
+}
 
 function locationListCtrl($scope) {
     $scope.data = {

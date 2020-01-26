@@ -11,14 +11,26 @@ block content
         p #{pageHeader.strapline}
   .row
     .col-xs-12.col-sm-8(ng-controller='locationListCtrl')
+      .filter-container.mb-2
+        | Поиск по тексту:
+        input.ml-2(type='text', name='filter', ng-model='textFilter')
+      .dropdown
+        button#dropdownMenuButton.btn.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown',
+          aria-haspopup='true', aria-expanded='false')
+          | Cортировать
+        .dropdown-menu
+          a.dropdown-item(href='#', onclick='alert("#{plug}")') По рейтингу
+          a.dropdown-item(href='#', onclick='alert("#{plug}")') По расстоянию
+          a.dropdown-item(href='#', onclick='alert("#{plug}")') По числу отзывов
       .row.list-group.col-sm-8
-        .col-xs-12.list-group-item.shadow-sm.mb-3(ng-repeat='location in data.locations')
+        .col-xs-12.list-group-item.shadow-sm.mb-3(ng-repeat='location in data.locations | filter: textFilter')
           h4
             a(href='/location/{{location.path}}') {{location.name}}
             small &nbsp;
               .col-sm-12.mt-2
               span.badge.pull-right.badge-pill.badge-secondary {{location.distance}} м.
-              small &nbsp; {{location.rating}}
+              | &nbsp;
+              small(rating-stars, rating='location.rating')
           p.address {{location.address}}
           span.badge.badge-pill.badge-info(ng-repeat='facility in location.facilities') {{facility}}
     .col-xs-12.col-sm-4
