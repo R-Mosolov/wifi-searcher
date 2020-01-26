@@ -70,8 +70,6 @@ var renderDetailsPage = function (req, res, locationDetails) {
             title: locationDetails.name
         },
         sidebar: {
-            context: 'Место "Coffee Like" размещено здесь потому, что оно обладает доступным Wi-Fi и просторными ' +
-                'креслами для работы на ноутбуке.',
             callToAction: 'Если Вы уже посещали это место, то будем очень рады получить Ваш отзыв о нём. Вы ' +
                 'поможете нам стать лучше!'
         },
