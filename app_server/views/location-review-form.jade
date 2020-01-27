@@ -8,10 +8,10 @@ block content
   .row
     .col-xs-12.col-sm-12
       form.form-horizontal(action='', method='post', role='form')
-        .form-group.d-none
+        .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='date') Дата создания отзыва
           .col-xs-10.col-sm-12
-            input#date.form-control(name='date', value=Date.now(), disabled)
+            input#date.form-control(name='date', value=Date.now().toString(), disabled)
 
         .form-group
           label.col-xs-10.col-sm-12.text-left.control-label(for='author') Ваши имя и фамилия
