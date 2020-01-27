@@ -186,8 +186,7 @@ var addReview = function (req, res, location) {
         location.reviews.push({
             author: req.body.author,
             rating: req.body.rating,
-            reviewText: req.body.reviewText,
-            date: req.body.date
+            reviewText: req.body.reviewText
         });
         location.save(function (err, location) {
             var currentReview;
