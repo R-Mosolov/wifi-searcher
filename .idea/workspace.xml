@@ -14,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -101,26 +101,74 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1577226979330" />
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1579652524027">
+    <state width="1419" height="303" key="GridCell.Tab.0.bottom" timestamp="1580210775006">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579652524027" />
-    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1579652524024">
+    <state width="1419" height="303" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580210775006" />
+    <state width="1419" height="303" key="GridCell.Tab.0.center" timestamp="1580210775004">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579652524024" />
-    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1579652524023">
+    <state width="1419" height="303" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1580210775004" />
+    <state width="1419" height="303" key="GridCell.Tab.0.left" timestamp="1580210775002">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579652524023" />
-    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1579652524025">
+    <state width="1419" height="303" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1580210775002" />
+    <state width="1419" height="303" key="GridCell.Tab.0.right" timestamp="1580210775005">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579652524025" />
-    <state x="229" y="89" key="SettingsEditor" timestamp="1579982136669">
+    <state width="1419" height="303" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1580210775005" />
+    <state width="1419" height="303" key="GridCell.Tab.1.bottom" timestamp="1580210775011">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1579982136669" />
+    <state width="1419" height="303" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580210775011" />
+    <state width="1419" height="303" key="GridCell.Tab.1.center" timestamp="1580210775009">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1580210775009" />
+    <state width="1419" height="303" key="GridCell.Tab.1.left" timestamp="1580210775007">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1580210775007" />
+    <state width="1419" height="303" key="GridCell.Tab.1.right" timestamp="1580210775010">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1580210775010" />
+    <state width="1419" height="303" key="GridCell.Tab.2.bottom" timestamp="1580210775016">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580210775016" />
+    <state width="1419" height="303" key="GridCell.Tab.2.center" timestamp="1580210775013">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1580210775013" />
+    <state width="1419" height="303" key="GridCell.Tab.2.left" timestamp="1580210775012">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1580210775012" />
+    <state width="1419" height="303" key="GridCell.Tab.2.right" timestamp="1580210775014">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1580210775014" />
+    <state width="1419" height="303" key="GridCell.Tab.3.bottom" timestamp="1580210775019">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580210775019" />
+    <state width="1419" height="303" key="GridCell.Tab.3.center" timestamp="1580210775017">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.center/0.0.1440.900@0.0.1440.900" timestamp="1580210775017" />
+    <state width="1419" height="303" key="GridCell.Tab.3.left" timestamp="1580210775017">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.left/0.0.1440.900@0.0.1440.900" timestamp="1580210775017" />
+    <state width="1419" height="303" key="GridCell.Tab.3.right" timestamp="1580210775018">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1580210775018" />
+    <state x="229" y="89" key="SettingsEditor" timestamp="1580210645111">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1580210645111" />
     <state x="329" y="194" width="782" height="550" key="find.popup" timestamp="1579984744840">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -15,11 +15,18 @@ function ratingStars() {
 
 function locationListCtrl($scope, wifiSearcherData) {
     wifiSearcherData
-        .then(function(data) {
-            $scope.locations = data
+        .then(function(res) {
+            console.log(res.json());
+            $scope.locations = res;
+            console.log($scope.locations);
+            if (res.status === 200) {
+                console.log('Status 200: OK');
+                $scope.locations = res.body.json();
+                console.log($scope.locations);
+            }
         })
-        .catch(function(error) {
-            console.log(error);
+        .catch(function(err) {
+            console.log(err);
         });
     $scope.reverse = true;
     $scope.propertyName = 'rating';
@@ -30,5 +37,6 @@ function locationListCtrl($scope, wifiSearcherData) {
 }
 
 function wifiSearcherData() {
-    return $http.get('/api/locations');
+    const responseLink = window.location + 'api/locations';
+    return fetch(responseLink);
 }
