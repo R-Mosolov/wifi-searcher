@@ -2,3 +2,6 @@
 .idea
 package-lock.json
 node_modules
+
+# Environment variables
+.env
