@@ -1,10 +1,10 @@
-require('dotenv').load();
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var passport = require('passport');
+var passport = require('./app_api/config/passport');
 
 require('./app_api/models/db');
 require('/app_api/config/passport');

@@ -31,3 +31,28 @@ module.exports.register = function (req, res) {
         }
     });
 };
+
+module.exports.login = function (req, res) {
+    if (!req.body.email || !req.body.password) {
+        return sendJsonResponce(res, 400, {
+            "message": "All fields required."
+        });
+    }
+
+    passport.authenticate('local', function (err, user, info) {
+        var token;
+
+        if (err) {
+            return sendJsonResponce(res, 404, err);
+        }
+
+        if (user) {
+            token = user.generateJwt();
+            sendJsonResponce(res, 200, {
+                "token": token
+            })
+        } else {
+            sendJsonResponce(res, 401, info);
+        }
+    })(req, req);
+};
