@@ -44,3 +44,4 @@ var gracefulShutdown = function (msg, callback) {
 };
 
 require('./locations');
+require('./users');

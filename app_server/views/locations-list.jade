@@ -11,13 +11,13 @@ block content
         p #{pageHeader.strapline}
   .row
     .col-xs-12.col-sm-8(ng-controller='locationListCtrl')
-      .d-flex.justify-content-between.flex-sm-wrap
-        .search.d-flex.justify-content-md-center.mb-3
+      .d-flex.justify-content-between.flex-wrap
+        .search.d-flex.justify-content-md-center.mb-3.flex-shrink-0
           .left-block
             | Поиск по тексту:
           .right-block
             input.ml-2(type='text', name='filter', ng-model='textFilter')
-        .sort.d-flex.justify-content-md-center.mb-3
+        .sort.d-flex.justify-content-md-center.mb-3.flex-shrink-0
           .left-block
             button.btn.btn-warning(ng-click='sortBy("rating")') По рейтингу
             | &nbsp;
