@@ -4,6 +4,7 @@ var apiOptions = {
 };
 if (process.env.NODE_ENV === 'production') {
     apiOptions.server = 'https://wifi-searcher.herokuapp.com';
+    console.log('SPA connected to outer DB');
 }
 
 // MAIN FUNCTIONS
